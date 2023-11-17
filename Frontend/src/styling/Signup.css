@@ -1,0 +1,166 @@
+.labelling{
+    margin-left: 14px;
+}
+
+.signupSection{
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    @media (min-width: 1280px) {
+        .element {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.signupContainer {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signupInnerContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 1024px) { /* 'lg' breakpoint */
+    .signupInnerContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.singupImg{
+    width: 100%; 
+    border-top-left-radius: 0.5rem; 
+    border-bottom-left-radius: 0.5rem;
+}
+
+.signupFormContainer {
+    border-radius: 0.5rem; 
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) { 
+    .signupFormContainer {
+        padding-left: 4rem; 
+    }
+}
+
+.signupHeader{
+
+}
+
+.signupText{
+    
+}
+
+.roleSelectorContainer{
+    display:inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.genderSelectorContainer {
+    display:inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.roleSelectorText, .genderSelectorText {
+    flex: 0 0 auto;
+    margin-right: 1rem; 
+}
+
+.roleText, .genderText {
+    flex: 1;
+    font-weight: 600; 
+    font-size: 15px;
+    line-height: 1.75rem;
+    padding: 12px 16px; 
+    display: block;
+    width: auto; 
+    border: 1px solid #ccc; 
+    border-radius: 0.25rem; 
+    font-family: 'Open Sans', sans-serif;
+}
+
+.roleText:focus, .genderText:focus {
+    outline: none;
+}
+
+
+.pictureContainer{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.accAvatarContainer{
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    border: 2px solid; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 20px;
+}
+
+.avatarImage{
+    transform: scale(1.85);
+}
+
+.uploadPhotoContainer{
+    position: relative; 
+    width: 130px; 
+    height: 50px;
+}
+
+.uploadPhotoContents{
+    position: absolute;
+    left: 0;
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    cursor: pointer; 
+    opacity: 0;
+}
+
+.uploadText{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem; 
+    font-size: 15px; 
+    line-height: 1.5; 
+    overflow: hidden; 
+    background-color: #ffd06b; 
+    color: black;
+    font-weight: 600; 
+    border-radius: 0.5rem; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    cursor: pointer; 
+
+    &:hover {
+        background-color: #6EADFF;
+        border: none;
+        color: white;
+        }
+}
+
+.signup{
+    text-align: center;
+    margin-top: 10px;
+}

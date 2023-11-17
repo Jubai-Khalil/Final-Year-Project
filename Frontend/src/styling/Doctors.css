@@ -1,0 +1,58 @@
+.doctorSection{
+    background-color: #FFF9EA;
+}
+
+.doctorsContainer{
+    max-width: 100%;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.doctorsHeader{
+    text-align: center;
+    color: #181A1E;
+    font-size: 44px;
+}
+
+.searchContainer{
+    max-width: 570px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0066FF2C;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.searchBar{
+    flex-grow: 1;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 8px;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.searchButton{
+    background-color: #866BFF;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-weight: 500;
+    padding: 6px 20px;
+    font-size: 21px;
+    cursor: pointer;
+    border: none;
+    line-height: 2.4rem;
+}

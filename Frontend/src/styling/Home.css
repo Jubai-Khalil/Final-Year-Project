@@ -1,0 +1,815 @@
+
+.heroSection{
+    padding-top: 60px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(to right, #fff2e8, white, #fff4d2);
+
+    @media (min-width: 1440px) {
+        .heroSection {
+            height: 80px;
+        }
+    }
+}
+
+.heroContainer{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.heroInnerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+    }
+
+}
+
+.heroImgContainer {
+    position: relative;
+    width: 100%; 
+    z-index: 10;
+    order: 1; 
+    text-align: center;
+
+    @media (min-width: 1024px) {
+        width: 40%;
+        order: 2;
+    }
+
+    @media (min-width: 1200px) {
+        width: 40%;
+    }
+}
+
+.heroImg{
+    border-radius: 10%;
+}
+
+.heroHeaderContainer{
+    width: 100%;
+    order: 2;
+    margin-right: 10px;
+    
+    @media (min-width: 1024px) {
+            width: 70%;
+            order: 1;
+    }
+        
+    @media (min-width: 1200px) {
+            width: 70%;
+    }
+}
+.counterSection{
+    margin-top: 30px;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+@media (min-width: 992px) {
+    .counterSection{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+    }
+}
+
+.counterContent{
+    font-size: 36px;
+    line-height: 56px;
+    font-weight: 700;
+    color: #181A1E;
+    margin-left: 10px;
+    flex-direction: row;
+}
+
+.counterUnderlineOne{
+    width: 100px;
+    height: 8px;
+    background-color: #08CAAD;
+    border-radius: 9%;
+    display: block;
+    margin-top: -14px;
+    margin-left: 10px;
+}
+
+.counterUnderlineTwo{
+    width: 100px;
+    height: 8px;
+    background-color: #6EADFF;
+    border-radius: 9%;
+    display: block;
+    margin-top: -14px;
+    margin-left: 10px;
+
+}
+
+.counterUnderlineThree{
+    width: 100px;
+    height: 8px;
+    background-color: #ffd06b;
+    border-radius: 9%;
+    display: block;
+    margin-top: -14px;
+    margin-left: 19px;
+
+}
+
+.counterText{
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #262626;
+    margin-top: 18px;
+}
+
+.heroHeader {
+    font-size: 50px;
+    line-height: 54px;
+    font-weight: 700;
+    color: #181A1E;
+    text-align: center;
+}
+
+.heroText{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #262626;
+    margin-top: 20px;     
+    text-align: center;
+}
+
+.linkWrapper{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.requestButton{
+    background-color: #866BFF;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    padding: 6px 20px;
+    font-size: 21px;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px; 
+    margin-left: 10px;
+}
+
+.howSectionContainer{
+    margin-top: 90px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.howHeader{
+    text-align: center;
+    color: #181A1E;
+    font-size: 44px;
+}
+
+.howText{
+    text-align: center;
+    margin-top: 20px;
+    color: #262626;
+    font-size: 18px;
+}
+
+.howIconsContainer{
+    display: grid;
+    max-width: 100%;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    margin-top: 30px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 55px;
+    }
+    
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+.howInnerContainer{
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.howIcon1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.howIcon2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.9);
+}
+
+.howIcon3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconHeader{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.iconHeaderContents{
+    font-size: 26px;
+    line-height: 1.35;
+    color: #181A1E;
+    font-weight: 700;
+    text-align: center;
+}
+
+.iconTextContents{
+    font-size: 16px;
+    line-height: 1.07;
+    color: #262626;
+    font-weight: 400;
+    margin-top: 4px;
+    text-align: center;
+}
+
+.arrowContainer{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #181A1E;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #ffd06b;
+    color: black;
+
+    &:hover {
+    background-color: #6EADFF;
+    border: none;
+    }
+}
+
+.arrowIcon{
+    width: 35px;
+    height: 35px;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.aboutContainer{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+.aboutInnerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 130px;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 0px;
+    }
+}
+
+.aboutImgContainer {
+    position: relative;
+    width: 100%; 
+    z-index: 10;
+    order: 2; 
+    text-align: center;
+
+    @media (min-width: 1024px) {
+        width: 30%;
+        order: 1;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+    }
+}
+
+.aboutImg {
+    border-radius: 10%;
+    margin-left: 10px;
+}
+
+.aboutHeaderContainer{
+    width: 100%;
+    order: 1;
+    margin-right: 10px;
+    
+    @media (min-width: 1024px) {
+            width: 70%;
+            order: 2;
+    }
+        
+    @media (min-width: 1200px) {
+            width: 70%;
+    }
+}
+
+.aboutHeader {
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 700;
+    color: #181A1E;
+    text-align: center;
+}
+
+.aboutText{
+    text-align: center;
+    margin-top: 20px;   
+    font-weight: 400;
+    color: #262626;
+}
+
+.linkWrapper{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.learnMoreButton{
+    background-color: #866BFF;
+    border-radius: 50px;
+    display: flex;
+    color: white;
+    font-weight: 500;
+    padding: 6px 20px;
+    font-size: 21px;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    margin-top: 40px; 
+
+    &:hover {
+        background-color: #08CAAD;
+    }
+}
+
+.servicesSection{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+.servicesHeaderContainer{
+    margin-top: 90px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servicesHeader{
+    text-align: center;
+    color: #181A1E;
+    font-size: 44px;
+}
+
+.servicesText{
+    text-align: center;
+    margin-top: 20px;   
+    font-weight: 400;
+    color: #262626;
+    font-size: 18px;
+}
+
+.servicesLinkWrapper{
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+
+    &:hover {
+        color: #08CAAD;
+    }
+}
+
+.servicesOfferedContainer{
+    display: grid;
+    max-width: 100%;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    margin-top: 30px;
+
+    @media (min-width: 768px) {
+        gap: 30px;
+        margin-top: 55px;
+    }
+    
+    @media (min-width: 992px) {
+        gap: 30px;
+    }
+}
+
+.servicesInnerContainer{
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.featureSection{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+.featInnerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 130px;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 0px;
+    }
+}
+
+.featImgContainer {
+    position: relative;
+    width: 100%; 
+    z-index: 10;
+    order: 1; 
+    text-align: center;
+
+    @media (min-width: 1024px) {
+        width: 30%;
+        order: 2;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+    }
+}
+
+.featImg {
+    border-radius: 10%;
+}
+
+.featHeaderContainer{
+    width: 100%;
+    order: 2;
+    margin-right: 10px;
+    
+    @media (min-width: 1024px) {
+            width: 70%;
+            order: 1;
+    }
+        
+    @media (min-width: 1200px) {
+            width: 70%;
+    }
+}
+
+.featHeader {
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 700;
+    color: #181A1E;
+    text-align: center;
+}
+
+.featText{
+    text-align: center;
+    margin-top: 20px;   
+    font-weight: 400;
+    color: #262626;
+}
+
+.featListWrapper{
+    list-style-type: none;
+}
+
+.featTextList{
+    text-align: center;
+    margin-top: 5px;   
+    font-weight: 400;
+    color: #262626;
+}
+
+.appointmentCard {
+    width: 280px;
+    background-color: #FAF7EE;
+    position: absolute;
+    bottom: 40px;
+    z-index: 20;
+    padding: 4px;
+    border-radius: 15px;
+}
+
+.cardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardInnerContainer{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cardTextDate{
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 600;
+    color: #262626;
+}
+
+.cardTextTime{
+    font-size: 16px;
+    line-height: 14px;
+    color: #6EADFF;
+}
+
+.cardTextType{
+    background-color: #08CAAD;
+    border-radius: 4px;
+    color: white;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 2px;
+}
+
+.cardImgContainer{
+    width: 5px;
+    height: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-right: 6px;
+}
+
+.doctorsSection{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+.doctorsHeaderContainer{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.doctorsHeader{
+    text-align: center;
+    color: #181A1E;
+    font-size: 44px;
+}
+
+.doctorsText{
+    text-align: center;
+    margin-top: 20px;   
+    font-weight: 400;
+    color: #262626;
+    font-size: 18px;
+}
+
+.docContainer{
+    display: grid;
+    max-width: 100%;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    margin-top: 30px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 55px;
+    }
+    
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+.docInnerContainer{
+    padding-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.docContents{
+    margin-top: 5px;
+    width: 92%;
+}
+
+.docHeaderContents{
+    font-size: 26px;
+    line-height: 1.35;
+    color: #181A1E;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.docImgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.docImg {
+    border-radius: 10%;
+    width: 100%;
+}
+
+.docText{
+    font-size: 16px;
+    line-height: 1.07;
+    color: #262626;
+    font-weight: 400;
+    margin-top: 4px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.docTextType{
+    font-size: 16px;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-left: 10px;
+    text-align: left;
+    background-color: #CCF0F3;
+    border-radius: 4px;
+    color: #19CAC2;
+    padding: 3px;
+}
+
+.docContents > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.docContents > div > p{
+    margin-left: auto;
+}
+
+.star{
+    size: 16px;
+    color: gold;
+}
+
+.docListWrapper{
+    list-style-type: none;
+}
+
+.docTotalRatings{
+    color: #888888;
+}
+
+
+.faqContainer{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+.faqInnerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 130px;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 0px;
+    }
+}
+
+.faqImgContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    z-index: 10;
+    order: 2; 
+
+
+    @media (min-width: 1024px) {
+        width: 30%;
+        order: 1;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+    }
+}
+
+.faqImg {
+    border-radius: 10%;
+    margin-left: 10px;
+    transform: scale(1.1);
+}
+
+.faqHeaderContainer{
+    width: 100%;
+    order: 1;
+    margin-right: 10px;
+    
+    @media (min-width: 1024px) {
+            width: 70%;
+            order: 2;
+    }
+        
+    @media (min-width: 1200px) {
+            width: 70%;
+    }
+}
+
+.faqHeader {
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 700;
+    color: #181A1E;
+    text-align: center;
+}

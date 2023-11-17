@@ -1,0 +1,72 @@
+.docsAboutText{
+    margin-top: 10px;   
+    font-weight: 400;
+    color: #262626;
+    font-size: 16px;
+}
+
+.docsEduHeader{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.eduContainer{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.eduDetails {
+    display: flex;
+    width: 60%;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.eduInstitution {
+    color: #262626; 
+    margin-top: 0; 
+    text-align: right; 
+}
+
+.docsGradYear{
+    font-size: 16px;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: left;
+    color: #19CAC2;
+}
+
+.experienceCardContainer {
+    display: grid;
+    grid-gap: 20px;
+    max-width: 40%;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.docsExperienceCard{
+    font-size: 16px;
+    color: #262626;
+    font-weight: 600;
+    text-align: left;
+    color: goldenrod;
+    background-color: #FFF9EA;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.listStyle{
+    list-style: none;
+}
+
+.docsExpText{
+    margin-top: 10px;   
+    font-weight: 400;
+    color: #262626;
+    font-size: 14px;
+}

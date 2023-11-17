@@ -1,0 +1,155 @@
+.docsSection{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.docsContainer{
+    display: grid;
+    max-width: 100%;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    margin-top: 30px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 55px;
+    }
+    
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+.docsInnerContainer{
+    padding-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.docsContents{
+    margin-top: 5px;
+    width: 92%;
+}
+
+.docsContents > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.docsContents > div > p{
+    margin-left: auto;
+}
+
+.docsHeaderContents{
+    font-size: 26px;
+    line-height: 1.35;
+    color: #181A1E;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+.docsImgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.docsImg {
+    border-radius: 10%;
+    width: 100%;
+}
+
+.consultationHeader{
+    font-size: 26px;
+    line-height: 1.2;
+    color: #181A1E;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.docsText{
+    font-size: 16px;
+    line-height: 1.2;
+    color: #262626;
+    font-weight: 400;
+    margin-top: 4px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.docsTextType{
+    font-size: 16px;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-left: 10px;
+    text-align: left;
+    background-color: #CCF0F3;
+    border-radius: 4px;
+    color: #19CAC2;
+    padding: 3px;
+}
+
+.star{
+    size: 16px;
+    color: gold;
+}
+
+.docsListWrapper{
+    list-style-type: none;
+}
+
+.docsTotalRatings{
+    color: #888888;
+}
+
+.docsInfoContainer{
+    margin-top: 50px;
+    border-bottom: 1px solid #888888;
+    margin-left: 20px;
+}
+
+.aboutButton{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #1C1F2A;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.activeTab{
+border-bottom: 2px solid black;
+border-left: none;
+border-top: none;
+border-right: none;
+}
+
+.tab{
+    margin-top: 50px;
+    margin-left: 20px;
+}

@@ -1,0 +1,79 @@
+
+.mainHeaderContainer{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    align-items: center;
+    background-image: linear-gradient(to right, #fff2e8, white, #fff4d2);
+}
+
+.headerContainer{
+    max-width: 100%;
+    width: 1440px;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.headerLogo{
+    transform: scale(1.75);
+    height: 100px;
+}
+
+.menuList {
+    color: #181A1E;
+    display: flex;
+    align-items: center;
+    gap: 2.7rem;
+    list-style-type: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.menuList :hover,
+.menuList :active {
+    color: #08CAAD
+}
+
+.userIconContainer{ 
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.userIcon{
+    transform: scale(0.90);
+    height: 100px;
+    border-radius: 50px;
+}
+
+.loginButton{
+    background-color: #866BFF;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    padding: 6px 20px;
+    font-size: 21px;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.hamburgerMenu {
+    width: 2.0rem;
+    height: 2.0rem;
+    cursor: pointer;
+}
+
+

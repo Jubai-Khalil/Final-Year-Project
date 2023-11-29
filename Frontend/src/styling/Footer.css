@@ -1,9 +1,11 @@
+/* Styling for the footer section */
 .footerSection{
     padding-top: 20px;
     padding-bottom: 20px;
     background-image: linear-gradient(to right, #fff2e8, white, #fff4d2);
 }
 
+/* Container for the entire footer */
 .footerContainer{
     display: flex;
     flex-direction: column;
@@ -20,10 +22,12 @@
     }
 }
 
+/* Styling for each inner container in the footer */
 .footerInnerContainer {
     margin-bottom: 20px;
 }
 
+/* Responsive styling for inner containers */
 @media (min-width: 768px) {
     .footerInnerContainer {
         margin-bottom: 0;
@@ -35,6 +39,7 @@
     }
 }
 
+/* Styling for the copyright text */
 .footerCopyright{
     font-size: 16px;
     line-height: 28px;
@@ -42,6 +47,7 @@
     color: #262626;
 }
 
+/* Styling for social media icons */
 .socialIcons{
     color: #866BFF;
     width: 24px;
@@ -53,6 +59,7 @@
     }
 }
 
+/* Container for social media icons */
 .footerIcons{
     display: flex;
     align-items: center;
@@ -60,6 +67,7 @@
     margin-top: 5px;
 }
 
+/* Styling for link containers within the footer */
 .footerInnerContainerLinks{
     display: flex;
     justify-content: space-between;
@@ -76,7 +84,7 @@
     }
 }
 
-
+/* Styling for individual footer links */
 .footerLinkWrapper{
     text-decoration: none;
     display: inline-block;

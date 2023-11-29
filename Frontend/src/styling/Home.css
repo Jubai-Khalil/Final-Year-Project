@@ -1,4 +1,4 @@
-
+/* Styling for the overall hero section */
 .heroSection{
     padding-top: 60px;
     padding-bottom: 20px;
@@ -13,7 +13,7 @@
         }
     }
 }
-
+/* main container styling for hero section */
 .heroContainer{
     max-width: 100%;
     width: 1440px;
@@ -24,6 +24,7 @@
     margin-top: 20px;
 }
 
+/* Styling for the inner container of the hero section */
 .heroInnerContainer {
     display: flex;
     flex-direction: column;
@@ -36,6 +37,7 @@
 
 }
 
+/* responsive styling for the container of the hero image */
 .heroImgContainer {
     position: relative;
     width: 100%; 
@@ -57,6 +59,7 @@
     border-radius: 10%;
 }
 
+/* styling for the header container in the hero section */ 
 .heroHeaderContainer{
     width: 100%;
     order: 2;
@@ -71,6 +74,8 @@
             width: 70%;
     }
 }
+
+/* Styling for counter section */
 .counterSection{
     margin-top: 30px;
     gap: 5px;
@@ -89,6 +94,7 @@
     }
 }
 
+/* Styling for the counter content */
 .counterContent{
     font-size: 36px;
     line-height: 56px;
@@ -130,6 +136,7 @@
 
 }
 
+/* Styling for the counter text */
 .counterText{
     margin-left: 10px;
     font-size: 18px;
@@ -139,6 +146,7 @@
     margin-top: 18px;
 }
 
+/* Styling for the hero header */
 .heroHeader {
     font-size: 50px;
     line-height: 54px;
@@ -147,6 +155,7 @@
     text-align: center;
 }
 
+/* Styling for the hero text */
 .heroText{
     font-size: 18px;
     line-height: 30px;
@@ -163,6 +172,7 @@
     width: 100%;
 }
 
+/* Styling for the request appointment button */
 .requestButton{
     background-color: #866BFF;
     border-radius: 50px;
@@ -177,8 +187,13 @@
     border: none;
     margin-top: 30px; 
     margin-left: 10px;
+    
+    &:hover{
+        background-color: #08CAAD;
+    }
 }
 
+/* Styling for the how section container */
 .howSectionContainer{
     margin-top: 90px;
     width: 100%;
@@ -186,12 +201,14 @@
     margin-right: auto;
 }
 
+/* Styling for the how header */
 .howHeader{
     text-align: center;
     color: #181A1E;
     font-size: 44px;
 }
 
+/* Styling for the how text */
 .howText{
     text-align: center;
     margin-top: 20px;
@@ -199,6 +216,7 @@
     font-size: 18px;
 }
 
+/* Styling for the container holding icons in the how section */
 .howIconsContainer{
     display: grid;
     max-width: 100%;
@@ -221,6 +239,7 @@
     }
 }
 
+/* Styling for each inner container in the how section */
 .howInnerContainer{
     padding-top: 20px;
     padding-left: 5px;
@@ -268,6 +287,7 @@
     text-align: center;
 }
 
+/* Styling for the arrow container */
 .arrowContainer{
     width: 44px;
     height: 44px;
@@ -298,6 +318,7 @@
     }
 }
 
+/* This styling block defines the overall container for the About section */
 .aboutContainer{
     max-width: 100%;
     width: 1440px;
@@ -308,6 +329,7 @@
     margin-top: 90px;
 }
 
+/* defines the styling for the inner container of the About section */
 .aboutInnerContainer {
     display: flex;
     flex-direction: column;
@@ -323,6 +345,7 @@
     }
 }
 
+/* defines the container for the About section image */
 .aboutImgContainer {
     position: relative;
     width: 100%; 
@@ -382,6 +405,7 @@
     width: 100%;
 }
 
+/* Styling for the learn more  button */
 .learnMoreButton{
     background-color: #866BFF;
     border-radius: 50px;
@@ -400,6 +424,7 @@
     }
 }
 
+/* stlyes the overall container for the Services section */
 .servicesSection{
     max-width: 100%;
     width: 1440px;
@@ -441,6 +466,7 @@
     }
 }
 
+/* styling block defines the container for the individual service offerings */
 .servicesOfferedContainer{
     display: grid;
     max-width: 100%;
@@ -449,7 +475,7 @@
     margin-right: auto;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5px;
-    margin-top: 30px;
+    margin-top: 20px;
 
     @media (min-width: 768px) {
         gap: 30px;
@@ -467,6 +493,7 @@
     padding-right: 5px;
 }
 
+/* styles the overall container for the Feature section */
 .featureSection{
     max-width: 100%;
     width: 1440px;
@@ -477,6 +504,7 @@
     margin-top: 90px;
 }
 
+/* defines styling for the inner container of the Feature section */
 .featInnerContainer {
     display: flex;
     flex-direction: column;
@@ -492,6 +520,7 @@
     }
 }
 
+/* styles the container for the Feature section image */
 .featImgContainer {
     position: relative;
     width: 100%; 
@@ -554,6 +583,7 @@
     color: #262626;
 }
 
+/* styles the background and positioning for the appointment card */
 .appointmentCard {
     width: 280px;
     background-color: #FAF7EE;
@@ -576,6 +606,7 @@
     gap: 6px;
 }
 
+/* styles the date on the appointment card  */
 .cardTextDate{
     font-size: 16px;
     line-height: 25px;
@@ -589,6 +620,7 @@
     color: #6EADFF;
 }
 
+/* styles the mock type of pratitioner on the appointment card  */
 .cardTextType{
     background-color: #08CAAD;
     border-radius: 4px;
@@ -598,6 +630,7 @@
     margin-left: 2px;
 }
 
+/* styles the container for the image on the appointment card */
 .cardImgContainer{
     width: 5px;
     height: 5px;
@@ -607,209 +640,4 @@
     border-radius: 4px;
     padding: 1px 6px;
     margin-right: 6px;
-}
-
-.doctorsSection{
-    max-width: 100%;
-    width: 1440px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 90px;
-}
-
-.doctorsHeaderContainer{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.doctorsHeader{
-    text-align: center;
-    color: #181A1E;
-    font-size: 44px;
-}
-
-.doctorsText{
-    text-align: center;
-    margin-top: 20px;   
-    font-weight: 400;
-    color: #262626;
-    font-size: 18px;
-}
-
-.docContainer{
-    display: grid;
-    max-width: 100%;
-    width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: 1fr;
-    grid-gap: 5px;
-    margin-top: 30px;
-
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        margin-top: 55px;
-    }
-    
-    @media (min-width: 992px) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-}
-
-.docInnerContainer{
-    padding-top: 20px;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.docContents{
-    margin-top: 5px;
-    width: 92%;
-}
-
-.docHeaderContents{
-    font-size: 26px;
-    line-height: 1.35;
-    color: #181A1E;
-    font-weight: 700;
-    margin-left: 10px;
-}
-
-.docImgContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-}
-
-.docImg {
-    border-radius: 10%;
-    width: 100%;
-}
-
-.docText{
-    font-size: 16px;
-    line-height: 1.07;
-    color: #262626;
-    font-weight: 400;
-    margin-top: 4px;
-    margin-left: 10px;
-    text-align: left;
-}
-
-.docTextType{
-    font-size: 16px;
-    color: #262626;
-    font-weight: 600;
-    margin-top: 4px;
-    margin-left: 10px;
-    text-align: left;
-    background-color: #CCF0F3;
-    border-radius: 4px;
-    color: #19CAC2;
-    padding: 3px;
-}
-
-.docContents > div{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.docContents > div > p{
-    margin-left: auto;
-}
-
-.star{
-    size: 16px;
-    color: gold;
-}
-
-.docListWrapper{
-    list-style-type: none;
-}
-
-.docTotalRatings{
-    color: #888888;
-}
-
-
-.faqContainer{
-    max-width: 100%;
-    width: 1440px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 90px;
-}
-
-.faqInnerContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-
-    @media (min-width: 1024px) {
-        flex-direction: row;
-        gap: 130px;
-    }
-
-    @media (min-width: 1200px) {
-        gap: 0px;
-    }
-}
-
-.faqImgContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; 
-    z-index: 10;
-    order: 2; 
-
-
-    @media (min-width: 1024px) {
-        width: 30%;
-        order: 1;
-    }
-
-    @media (min-width: 1200px) {
-        width: 30%;
-    }
-}
-
-.faqImg {
-    border-radius: 10%;
-    margin-left: 10px;
-    transform: scale(1.1);
-}
-
-.faqHeaderContainer{
-    width: 100%;
-    order: 1;
-    margin-right: 10px;
-    
-    @media (min-width: 1024px) {
-            width: 70%;
-            order: 2;
-    }
-        
-    @media (min-width: 1200px) {
-            width: 70%;
-    }
-}
-
-.faqHeader {
-    font-size: 44px;
-    line-height: 54px;
-    font-weight: 700;
-    color: #181A1E;
-    text-align: center;
 }

@@ -2,14 +2,14 @@
 
 import React from "react";
 import "../styling/Home.css";
+import "../styling/FaqSection.css";
 import "../styling/Testimonial.css";
 import heroImage from "../assets/images/heroImage.png";
 import icon1 from "../assets/images/icon1.png";
 import icon2 from "../assets/images/icon2.png";
 import icon3 from "../assets/images/icon3.png";
-import docImg1 from "../assets/images/docImg1.png";
-import docImg2 from "../assets/images/docImg2.png";
-import docImg3 from "../assets/images/docImg3.png";
+import doctorsData from "../assets/data/doctorsData.js";
+import servicesData from "../assets/data/servicesData.js";
 import featImg from "../assets/images/featImg.png";
 import aboutIcon from "../assets/images/aboutIcon.png";
 import videoIcon from "../assets/images/videoIcon.png";
@@ -20,7 +20,13 @@ import { BsFillStarFill } from "react-icons/bs";
 import FaqSection from "../components/Faqs/FaqSection";
 import Testimonial from "../components/Testimonials/Testimonial";
 
+
+// something cool would be to randomly generate numbers between 1 and total number of doctors (without duplicating) so that it changes the doctors around but for now just use 1,2,3 until i have more doctors
+// abstract each section into its own sections for better modularity and maintainability
 const Home = () => {
+
+    // Slice the first three doctors from doctorsData for doctors theme section
+    const displayedDoctors = doctorsData.slice(0, 3);
 
     return  (
         <>
@@ -56,7 +62,7 @@ const Home = () => {
                                     <p className="counterText">Patient Satisfaction</p>
                                 </div>
                             </div>
-                            <Link to="/About" className="linkWrapper">
+                            <Link to="/Doctors" className="linkWrapper">
                             <button className="requestButton">Request Appointment</button>
                             </Link>
                         </div>
@@ -162,107 +168,28 @@ const Home = () => {
                 </div>
             </section>
         {/* ============ services section ============ */}
-            <section>
+        <section>
                 <div className="servicesSection">
                     <div className="servicesHeaderContainer">
-                        <h2 className="servicesHeader">
-                            Our Medical Services 
-                        </h2>
+                        <h2 className="servicesHeader">Our Medical Services</h2>
                         <p className="servicesText">
-                        At the heart of our institution lies a commitment to enhancing the well-being and health of our community. 
-                        Here's a brief overview into the range of medical services we offer. Can't find what you're looking for below? <Link to="/Services" className="servicesLinkWrapper">Click here</Link>  
-                        to get a better idea of the services we have to offer.
+                            At the heart of our institution lies a commitment to enhancing the well-being and health of our community. 
+                            Here's a brief overview into the range of medical services we offer. Want to know more? Click on the arrows below each segment to be taken directly to the practiotioners page.
                         </p>
                     </div>
                     <div className="servicesOfferedContainer">
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Oncology
-                                </h2>
-                                <p className="iconTextContents">
-                                We know that cancer care is more than just treating the disease. It's also about supporting the 
-                                person, physically, emotionally, and spiritually. So we offer a wide range of supportive 
-                                care services, including pain management, nutrition counseling, and psychosocial support.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
+                        {/* Mapping through services data*/}
+                        {servicesData.map(service => (
+                            <div className="servicesInnerContainer" key={service.id}>
+                                <div className="iconHeader">
+                                    <h2 className="iconHeaderContents">{service.title}</h2>
+                                    <p className="iconTextContents">{service.description}</p>
+                                    <Link to={service.link} className="arrowContainer">
+                                        <BsArrowRight className="arrowIcon"/>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Labor & Delivery
-                                </h2>
-                                <p className="iconTextContents">
-                                On the day of your delivery, our team will be there to provide you with compassionate and supportive 
-                                care. We'll monitor your labor and progress, and we'll be there to help you manage the pain and discomfort. 
-                                We'll also be there to celebrate the joyous moment when your baby is born.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Mental Health
-                                </h2>
-                                <p className="iconTextContents">
-                                We understand that mental health can be a difficult topic to talk about, but we want to assure you that you're not alone. 
-                                We're here to listen and to help you find the path to healing. We offer a variety of services, including individual therapy, 
-                                group therapy, and medication management.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Neurology
-                                </h2>
-                                <p className="iconTextContents">
-                                If you're concerned about your neurological health, we encourage you to schedule an appointment with one of our neurologists. 
-                                We're here to help you get the answers you need and the care you deserve. We also offer a variety of support services such as support groups.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Cardiology
-                                </h2>
-                                <p className="iconTextContents">
-                                Your heart is one of the most important organs in your body, and keeping it healthy is essential for your overall health and well-being. 
-                                If you're concerned about your heart health, or if you have any risk factors for heart disease, it's important to see a cardiologist.  
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="servicesInnerContainer">
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Plastic Surgery
-                                </h2>
-                                <p className="iconTextContents">
-                                We understand that plastic surgery can be a major decision, and it's not one you have to make alone. We're here to support you every 
-                                step of the way. We'll provide you with the information you need to make an informed decision, and we'll be there to answer any questions 
-                                you may have.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -321,95 +248,33 @@ const Home = () => {
             </section>
         {/* ============ doctors section ============ */} 
             <section>
-                <div className="doctorsSection">
-                    <div className="doctorsHeaderContainer">
-                        <h2 className="doctorsHeader">
-                            Meet Our Doctors
-                        </h2>
-                        <p className="doctorsText">
-                        In the world of healthcare, the human touch, expertise, and dedication stand paramount. Our hospital boasts a team of highly skilled, compassionate, and dedicated professionals committed to delivering the best care possible. 
-                        Here's an introduction to some of our esteemed doctors.
+                <div className="docsThemeSection">
+                    <div className="docsThemeHeaderContainer">
+                        <h2 className="docsThemeHeader">Meet Our Doctors</h2>
+                        <p className="docsThemeText">
+                            In the world of healthcare, the human touch, expertise, and dedication stand paramount. Our hospital boasts a team of highly skilled, compassionate, and dedicated professionals committed to delivering the best care possible. 
+                            Here's an introduction to some of our esteemed doctors.
                         </p>
                     </div>
-                    <div className="docContainer">
-                        <div className="docInnerContainer">
-                            <div className="docImgContainer">
-                                <img src={docImg1} alt="" className="docImg"/> {/*© [Monkey Business] / Adobe Stock*/}
-                            </div>
-                            <div className="docContents">
-                                <h2 className="docHeaderContents">
-                                    Dr. Richard Gray
-                                </h2>
-                                <div>
-                                    <span className="docTextType">
-                                        Cardiologist
-                                    </span>
-                                    <p>
-                                        <BsFillStarFill className="star"/> 4.8
-                                    </p>
-                                    <li className="docListWrapper">
-                                        <p className="docTotalRatings">
-                                            (1013)
-                                        </p>
-                                    </li>
+                    <div className="docsThemeContainer">
+                        {displayedDoctors.map(doctor => (
+                            <div className="docsThemeInnerContainer" key={doctor.id}>
+                                <div className="docsThemeImgContainer">
+                                    <img src={doctor.imageUrl} alt={doctor.name} className="docsThemeImg"/>
                                 </div>
-                                <Link to="/Doctors/Cardiologist" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="docInnerContainer">
-                            <div className="docImgContainer">
-                                <img src={docImg2} alt="" className="docImg"/> {/*© [goodluz] / Adobe Stock*/}
-                            </div>
-                            <div className="docContents">
-                                <h2 className="docHeaderContents">
-                                    Dr. James Patterson
-                                </h2>
-                                <div>
-                                    <span className="docTextType">
-                                        Neurologist
-                                    </span>
-                                    <p>
-                                        <BsFillStarFill className="star"/> 4.7
-                                    </p>
-                                    <li className="docListWrapper">
-                                        <p className="docTotalRatings">
-                                            (412)
-                                        </p>
-                                    </li>
+                                <div className="docsThemeContents">
+                                    <h2 className="docsThemeHeaderContents">{doctor.name}</h2>
+                                    <div>
+                                        <span className="docsThemeTextType">{doctor.specialty}</span>
+                                        <p><BsFillStarFill className="star"/> {doctor.rating}</p>
+                                        <p className="docsThemeTotalRatings">({doctor.totalRatings})</p>
+                                    </div>
+                                    <Link to={doctor.profileLink} className="arrowContainer">
+                                        <BsArrowRight className="arrowIcon"/>
+                                    </Link>
                                 </div>
-                                <Link to="/Contact" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
                             </div>
-                        </div>
-                        <div className="docInnerContainer">
-                            <div className="docImgContainer">
-                                <img src={docImg3} alt="" className="docImg"/> {/*© [lordn] / Adobe Stock*/}
-                            </div>
-                            <div className="docContents">
-                                <h2 className="docHeaderContents">
-                                    Dr. Lisa Monroe
-                                </h2>
-                                <div>
-                                    <span className="docTextType">
-                                    Oncologist
-                                    </span>
-                                    <p>
-                                        <BsFillStarFill className="star"/> 4.6
-                                    </p>
-                                    <li className="docListWrapper">
-                                        <p className="docTotalRatings">
-                                            (831)
-                                        </p>
-                                    </li>
-                                </div>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -422,7 +287,7 @@ const Home = () => {
                         </div>
                         <div className="faqHeaderContainer">
                             <h2 className="faqHeader">
-                            Most Frequently Asked Questions By Our Customers
+                                Most Frequently Asked Questions By Our Customers
                             </h2>
         {/* ============ faq content ============ */}   
                             <FaqSection />

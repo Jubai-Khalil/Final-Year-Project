@@ -1,5 +1,6 @@
 
-.mainHeaderContainer{
+/* overall section container for the header content */
+.headerSection{
     display: flex;
     position: sticky;
     top: 0;
@@ -8,6 +9,7 @@
     background-image: linear-gradient(to right, #fff2e8, white, #fff4d2);
 }
 
+/* speciific Container for the header content */
 .headerContainer{
     max-width: 100%;
     width: 1440px;
@@ -15,6 +17,7 @@
     margin: 0 auto;
 }
 
+/* Styling for the header itself */
 .header{
     display: flex;
     align-items: center;
@@ -23,11 +26,13 @@
     top: 0;
 }
 
+/* Styles for the logo image */
 .headerLogo{
     transform: scale(1.75);
     height: 100px;
 }
 
+/* Styling for the navigation menu list */
 .menuList {
     color: #181A1E;
     display: flex;
@@ -44,18 +49,21 @@
     color: #08CAAD
 }
 
+/* Container for the user icon */
 .userIconContainer{ 
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
+/* Styling for the user icon image */
 .userIcon{
     transform: scale(0.90);
     height: 100px;
     border-radius: 50px;
 }
 
+/* Styles for the login button */
 .loginButton{
     background-color: #866BFF;
     border-radius: 50px;
@@ -68,12 +76,28 @@
     justify-content: center;
     cursor: pointer;
     border: none;
+    display: block;
+    width: auto;
 }
 
+/* Styles for the hamburger menu icon */
 .hamburgerMenu {
     width: 2.0rem;
     height: 2.0rem;
     cursor: pointer;
+}
+
+/* Wrapper for links in the header */
+.headerlinkWrapper{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Wrapper for the login link */
+.loginlinkWrapper{
+    text-decoration: none;
 }
 
 

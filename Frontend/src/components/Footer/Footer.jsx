@@ -7,6 +7,7 @@ import {BsYoutube} from "react-icons/bs";
 import {BsLinkedin} from "react-icons/bs";
 import {BsGithub} from "react-icons/bs";
 
+// Array of social media links and their corresponding icons
 const socialLinks = [
     {
         path: "https://www.youtube.com",
@@ -36,10 +37,12 @@ const Footer = () => {
                 <div className="footerInnerContainer">
                     <div>
                         <img src={footerLogo} alt="" />
+                        {/* Copyright notice with dynamic year */}
                         <p className="footerCopyright">
                             Copyright © {year} developed by Jubai-Khalil
                         </p>
                         <div className="footerIcons">
+                            {/* Mapping through socialLinks array to display each social media link */}
                             {socialLinks.map((link, index) => (
                             <a href={link.path} key={index} target="_blank" rel="noopener noreferrer" className="socialIcons">
                             {link.icon}
@@ -56,7 +59,6 @@ const Footer = () => {
                         <Link to="/Home" className="footerLinkWrapper">Home</Link>
                         <Link to="/About" className="footerLinkWrapper">About Us</Link>
                         <Link to="/Doctors" className="footerLinkWrapper">Find A Doctor</Link>
-                        <Link to="/Services" className="footerLinkWrapper">Services</Link>
                     </div>
                 </div>
                 <div className="footerInnerContainer">

@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import "../../styling/DoctorFeedback.css";
-import avatarIcon2 from "../../assets/images/avatarIcon2.png"
-import FeedbackForm from "./FeedbackForm";
+import avatarIcon2 from "../../assets/images/avatarIcon2.png";
+import FeedbackForm from "../../components/Docotors/FeedbackForm";
 import { BsFillStarFill } from "react-icons/bs";
-
+import doctorsData from "../../assets/data/doctorsData.js"; 
 
 const CardiologyFeedback = () => {
 
-    const [showFeedbackForm, setShowFeedbackForm] = useState(false)
+    // State hook to manage the visibility of the feedback form
+    const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+
+    // Find the cardiologist from the doctors data
+    const cardiologist = doctorsData.find(doctor => doctor.specialty === "Cardiologist");
+
+    // Check if cardiologist is found, otherwise display an error message
+    if (!cardiologist) {
+        return <div>Error: Cardiologist not found.</div>;
+    }
 
     return (
         <div>
-            <div>
+            <div key={cardiologist.id}>
                 <h3 className="feedbackHeader">
-                    All reviews (272)
+                    All reviews ({cardiologist.totalRatings})
                 </h3>
                 <div className="feedbackContainer">
                     <div className="feedbackImgContainer">
@@ -23,7 +32,7 @@ const CardiologyFeedback = () => {
                         </figure>
                         <div>
                             <h5 className="feedbackName">
-                            Ali Ahmed
+                                Ali Ahmed
                             </h5>
                             <p className="feedbackDate">
                                 {formatDate()}
@@ -34,20 +43,22 @@ const CardiologyFeedback = () => {
                         </div>
                     </div>
                     <div className="feedbackStarContainer">
-                        {[...Array(5).keys()].map((_,index) => <BsFillStarFill keys={index} className="star" />)}
+                        {[...Array(5).keys()].map((_, index) => <BsFillStarFill key={index} className="star" />)}
                     </div>
                 </div>
-                {!showFeedbackForm && (
-                    <div className="feedbackBtnContainer">
-                        <button className="feedbackFormButton" onClick={() => setShowFeedbackForm(true)}>
-                            Give Feedback
-                        </button>
-                    </div>
-                )}
-                {showFeedbackForm && <FeedbackForm />}
             </div>
+            {!showFeedbackForm && (
+                <div className="feedbackBtnContainer">
+                    {/* rendering for feedback button */}
+                    <button className="feedbackFormButton" onClick={() => setShowFeedbackForm(true)}>
+                        Give Feedback
+                    </button>
+                </div>
+            )}
+            {/* rendering for feedback form */}
+            {showFeedbackForm && <FeedbackForm doctorId={cardiologist.id} />}
         </div>
     );
 };
 
-export default CardiologyFeedback
+export default CardiologyFeedback;

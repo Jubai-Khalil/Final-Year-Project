@@ -6,7 +6,7 @@ import avatarIcon3 from "../assets/images/avatarIcon3.png"
 
 const Signup = () => {
 
-
+    // Commented out section for future state and form handling
     {/*
     const [selectedFile, setSelectedFile] = useState(null);
     const [PreviewURL, setPreviewURl] = usestate ("");
@@ -54,8 +54,8 @@ const Signup = () => {
                     </div>
                     {/* ============ registration form ============ */} 
                     <div className="signupFormContainer">
-                        <h3 className="signupHeader">
-                            Create An <span className="signupText">Account</ span>
+                        <h3>
+                            Create An <span className="signupHeader">Account</ span>
                         </h3>
                         <form /*onSubmit={submitHandler}*/>
                             <div>
@@ -150,6 +150,7 @@ const Signup = () => {
                                 <button type="submit" className="loginButton">Sign up</button>
                             </div> 
                             <p className="signup">
+                            {/* Link to login page for existing users */}
                                 Already Have An Account? <Link to="/Login" className="loginLinkWrapper">Login</Link>
                             </p>
                         </form>

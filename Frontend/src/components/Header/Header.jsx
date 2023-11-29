@@ -5,14 +5,11 @@ import userIcon from "../../assets/images/userIcon.png";
 import { NavLink, Link } from "react-router-dom";
 import {BiMenu} from "react-icons/bi";
 
+// Array of objects representing navigation links
 const navLinks = [
     {
         path: '/Home',
         display:'Home'
-    },
-    {
-        path: '/Services',
-        display:'Services'
     },
     {
         path: '/About',
@@ -30,11 +27,11 @@ const navLinks = [
 
 
 const Header = () => {
-    
+    // Function to map over NavLinks and render them as NavLink components
     const renderNavLinks = () => {
         return navLinks.map((link, index) => (
             <li key={index}>
-                <NavLink
+                <NavLink className="headerlinkWrapper"
                     to={link.path}
                     activeClassName="active-link"
                     exact
@@ -47,7 +44,7 @@ const Header = () => {
 
 
     return (
-        <header className="mainHeaderContainer">
+        <header className="headerSection">
             <div className="headerContainer">
                 <div className="header">
                     {/* ============ logo ============ */}
@@ -69,7 +66,7 @@ const Header = () => {
                         </div>
                     </div>
                     {/* ============ login ============ */}
-                    <Link to="/login">
+                    <Link to="/login" className="loginlinkWrapper">
                         <button className="loginButton">Login</button>
                     </Link>
                     <span hidden>

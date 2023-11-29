@@ -1,7 +1,9 @@
-.doctorSection{
+/* General styling for the doctors section */
+.doctorsSection{
     background-color: #FFF9EA;
 }
 
+/* Container styling for the doctors section */
 .doctorsContainer{
     max-width: 100%;
     width: 100%;
@@ -12,12 +14,14 @@
 
 }
 
+/* Styling for the header in the doctors section */
 .doctorsHeader{
     text-align: center;
     color: #181A1E;
     font-size: 44px;
 }
 
+/* Container for the search functionality */
 .searchContainer{
     max-width: 570px;
     margin-top: 30px;
@@ -29,6 +33,7 @@
     align-items: center;
 }
 
+/* Styling for the search input field */
 .searchBar{
     flex-grow: 1;
     padding-top: 16px;
@@ -44,6 +49,13 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Styling for the placeholder text */
+.searchBar::placeholder {
+    font-size: 16px; 
+    color: #666;
+}
+
+/* Styling for the search button */
 .searchButton{
     background-color: #866BFF;
     border-top-right-radius: 10px;
@@ -55,4 +67,135 @@
     cursor: pointer;
     border: none;
     line-height: 2.4rem;
+}
+
+/* Styling for the doctors theme section */
+.docsThemeSection{
+    max-width: 100%;
+    width: 1440px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+
+/* Container for the header of the doctors theme section */
+.docsThemeHeaderContainer{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styling for the header in the doctors theme section */
+.docsThemeHeader{
+    text-align: center;
+    color: #181A1E;
+    font-size: 44px;
+}
+
+/* Styling for the text in the doctors theme section */
+.docsThemeText{
+    text-align: center;
+    margin-top: 20px;   
+    font-weight: 400;
+    color: #262626;
+    font-size: 18px;
+}
+
+/* Grid container for doctor profiles */
+.docsThemeContainer{
+    display: grid;
+    max-width: 100%;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    margin-top: 30px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 55px;
+    }
+    
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Inner container for each doctor profile */
+.docsThemeInnerContainer{
+    padding-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container for the contents of each doctor profile */
+.docsThemeContents{
+    margin-top: 5px;
+    width: 92%;
+}
+
+/* Styling for the header contents within each doctor profile */
+.docsThemeHeaderContents{
+    font-size: 26px;
+    line-height: 1.35;
+    color: #181A1E;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+/* Container for the image of each doctor profile */
+.docsThemeImgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+/* Styling for the image within each doctor profile */
+.docsThemeImg {
+    border-radius: 10%;
+    width: 100%;
+}
+
+/* Styling for the specialty text type within each doctor profile */
+.docsThemeTextType{
+    font-size: 16px;
+    color: #262626;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-left: 10px;
+    text-align: left;
+    background-color: #CCF0F3;
+    border-radius: 4px;
+    color: #19CAC2;
+    padding: 3px;
+}
+
+.docsThemeContents > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.docsThemeContents > div > p{
+    margin-left: auto;
+}
+
+.star{
+    size: 16px;
+    color: gold;
+}
+
+.docsThemeListWrapper{
+    list-style-type: none;
+}
+
+.docsThemeTotalRatings{
+    color: #888888;
 }

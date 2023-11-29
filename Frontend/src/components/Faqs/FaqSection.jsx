@@ -2,19 +2,32 @@
 
 import React, { useState } from "react";
 import { BsFilePlus, BsFileMinus } from "react-icons/bs";
-import "../../styling/FaqSection.css"; // Assuming you have this CSS file
+import "../../styling/FaqSection.css"; 
 
+// FaqItem component represents a single FAQ item with a question and answer
 const FaqItem = ({ question, answer }) => {
+    // State to track if the FAQ item is expanded or not
     const [isExpanded, setIsExpanded] = useState(false);
+
+    // Function to handle click event on FAQ question
+    const handleQuestionClick = () => {
+        try {
+            setIsExpanded(!isExpanded); // Toggle the expanded state
+        } catch (error) {
+            console.error("Error occurred while expanding FAQ item:", error);
+        }
+    };
 
     return (
         <div className="faqItem">
-            <div className="faqQuestion" onClick={() => setIsExpanded(!isExpanded)}>
+            <div className="faqQuestion" onClick={handleQuestionClick}>
                 {question}
                 <span className="faqIcon">
-                    {isExpanded ? <BsFilePlus /> : <BsFileMinus />}
+                    {/* Toggle between plus and minus icons */}
+                    {isExpanded ? <BsFileMinus /> : <BsFilePlus />}
                 </span>
             </div>
+            {/* Display answer if the item is expanded */}
             {isExpanded && <div className="faqAnswer">{answer}</div>}
         </div>
     );
@@ -46,6 +59,7 @@ const FaqSection = () => {
 
     return (
         <div className="faqSection">
+            {/* Map through each FAQ item and render them */}
             {faqData.map((item, index) => (
                 <FaqItem key={index} question={item.question} answer={item.answer} />
             ))}
@@ -54,3 +68,4 @@ const FaqSection = () => {
 };
 
 export default FaqSection;
+

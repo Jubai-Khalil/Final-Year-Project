@@ -1,4 +1,5 @@
 
+ /* Styles the main header text of the form */
 .formHeader{
     color: #181818;
     font-size: 18px;
@@ -7,20 +8,24 @@
     margin-bottom: 10px;
 }
 
+/* Styles the star rating buttons */
 .starButton{
     all: unset;
     cursor: pointer;
     margin: 0 1.5px;
 }
 
+/* Styles the star icons when they are active or hovered (gold color) */
 .color-yellow .feedbackStar {
     color: gold;
 }
 
+/* Default style for the star icons */
 .color-grey .feedbackStar {
     color: grey;
 }
 
+/* Styling for the star icons on hover or focus */
 .starButton:hover .feedbackStar, 
 .starButton:focus .feedbackStar {
     color: gold; 
@@ -30,6 +35,7 @@
     font-size: 25px;
 }
 
+/* Styling for the header above the feedback text area */
 .feedbackBoxHeader{
     color: #181818;
     font-size: 18px;
@@ -39,6 +45,7 @@
     margin-top: 20px;
 }
 
+/* Styles the text area where users can put their feedback */
 .messageBox{
     border-style: solid; 
     border-color: black; 
@@ -54,6 +61,7 @@
     font-size: 16px;
 }
 
+/* Styles for the submit button */
 .submitFormButton{
     background-color: #866BFF;
     border-radius: 50px;

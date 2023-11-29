@@ -1,3 +1,4 @@
+/* General styling for the main container of the doctor's page */
 .docsSection{
     max-width: 100%;
     width: 1440px;
@@ -9,6 +10,7 @@
     margin-bottom: 60px;
 }
 
+/* Responsive grid layout for the container */
 .docsContainer{
     display: grid;
     max-width: 100%;
@@ -31,6 +33,7 @@
     }
 }
 
+/* Styling for inner containers */
 .docsInnerContainer{
     padding-top: 20px;
     display: flex; 
@@ -43,16 +46,19 @@
     width: 92%;
 }
 
+/* Flex layout for direct child divs inside docsContents */
 .docsContents > div{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+ /* Margin adjustments for paragraph elements inside these divs */
 .docsContents > div > p{
     margin-left: auto;
 }
 
+/* Styling for header contents */
 .docsHeaderContents{
     font-size: 26px;
     line-height: 1.35;
@@ -74,6 +80,7 @@
     width: 100%;
 }
 
+ /* Styling for consultation list section */
 .consultationHeader{
     font-size: 26px;
     line-height: 1.2;
@@ -84,6 +91,7 @@
     text-align: left;
 }
 
+/* Text styling for general content */
 .docsText{
     font-size: 16px;
     line-height: 1.2;
@@ -94,6 +102,7 @@
     text-align: left;
 }
 
+/* Styling for the doctors speciality */
 .docsTextType{
     font-size: 16px;
     color: #262626;
@@ -126,6 +135,7 @@
     margin-left: 20px;
 }
 
+/* Styling for toggle tab buttons */
 .aboutButton{
     padding-top: 2px;
     padding-bottom: 2px;
@@ -142,6 +152,7 @@
     border-radius: 5px;
 }
 
+/* Styling for the currently active tab */
 .activeTab{
 border-bottom: 2px solid black;
 border-left: none;
@@ -152,4 +163,12 @@ border-right: none;
 .tab{
     margin-top: 50px;
     margin-left: 20px;
+}
+
+/* Styling for consultation price */
+.consultationPrice {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #285c29; 
 }

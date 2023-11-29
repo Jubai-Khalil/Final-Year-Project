@@ -1,3 +1,4 @@
+/* Styles the main container of the side panel */
 .panelBox{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     padding: 12px;
@@ -6,12 +7,14 @@
     width: 100%;
 }
 
+/* Styles the container that aligns items in a row */
 .boxContainer{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/* Styles the price information text */
 .boxPrice{
     font-size: 16px;
     line-height: 1.5em;
@@ -20,6 +23,7 @@
     font-weight: bold;
 }
 
+/* Styles the header text for the appointment section. */
 .innerPanelContainer{
     margin-top: 20px;
 }
@@ -34,6 +38,7 @@
     margin-top: 40px;
 }
 
+/* Styles the 'Book Appointment' button */
 .bookAppointmentBtn{
     background-color: #866BFF;
     border-radius: 50px;

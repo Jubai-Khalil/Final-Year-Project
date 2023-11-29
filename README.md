@@ -26,4 +26,4 @@ To close the running application type 'q' in the terminal which is running the r
 
 Additional Information
 ----------------------
-For now google maps API key has been included for ease of access purposes, when the project is complete it will be removed.
+Google maps API key has been included for ease of access purposes.

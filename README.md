@@ -5,6 +5,10 @@ Background
 This project is a chosen final year project for the course "Computer Science".
 The aim of this project is to create a web application that allows users to register an account and book an appointment with a doctor to receive an online medical consultation. Currently this project is unfinished, however, you are more then welcome to have a look at the current development and keep tabs on the progress.
 
+Installing Node.js
+------------------
+To install node.js, you can download it from [here](https://nodejs.org/en/download). After downloading and installing it you can now use the npm command.
+
 Starting the React applications
 -------------------------------
 Before starting, navigate to the folder 'Frontend' in a new terminal. Then:

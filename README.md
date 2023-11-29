@@ -14,7 +14,7 @@ Before starting, navigate to the folder 'Frontend' in a new terminal. Then:
 - Run npm install to install the necessary node modules
 - Run npm run dev
 
-- The website should now open automatically. If not, Click on the provided Link in the terminal. Normally http://localhost:xxxx/
+- The website should now open automatically. If not, click on the provided Link in the terminal. Normally http://localhost:xxxx/
 
 That's all! React should be up and running.
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../context/AuthContext";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Home from "../pages/Home";
@@ -9,35 +10,79 @@ import Signup from "../pages/Signup";
 import Doctors from "../pages/Doctors";
 import Donate from "../pages/Donate";
 import Cardiologist from "../pages/practitioners/Cardiologist";
-//import rest of doctors individual pages
-import { Routes, Route } from "react-router-dom";
+import Neurologist from "../pages/practitioners/Neurologist";
+import Oncologist from "../pages/practitioners/Oncologist";
+import Obstetrician from "../pages/practitioners/Obstetrician";
+import Psychiatrist from "../pages/practitioners/Psychiatrist";
+import GeneralPractitioner from "../pages/practitioners/GeneralPractitioner";
+import Dermatologist from "../pages/practitioners/Dermatologist";
+import Orthopedist from "../pages/practitioners/Orthopedist";
+import PlasticSurgeon from "../pages/practitioners/PlasticSurgeon";
+import MyAccount from "../Dashboard/user-account/MyAccount";
+import Dashboard from "../Dashboard/doctor-account/Dashboard";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+// wrap authentication around routes that require user roles to access.
+const ProtectedRoute = ({ children, allowedRoles }) => {
+    const { token, role } = useContext(authContext);
+    const isAllowed = allowedRoles.includes(role);
+    return token && isAllowed ? children : <Navigate to="/login" replace />;
+};
 
 // configured routes as an array of objects
 const routes = [
-    { path: "/", component: Home },
-    { path: "/Home", component: Home },
-    { path: "/about", component: About },
-    { path: "/login", component: Login },
-    { path: "/contact", component: Contact },
-    { path: "/Register", component: Signup },
-    { path: "/doctors", component: Doctors },
-    { path: "/donate", component: Donate },
-    { path: "/doctors/Cardiologist", component: Cardiologist },
-    //{ path: "/doctors/Neurologist", component: Neurologist },
-    //{ path: "/doctors/Oncologist", component: Oncologist },
-    //add other path for rest of doctors
+    { path: "/", component: Home, protected: false},
+    { path: "/Home", component: Home, protected: false },
+    { path: "/about", component: About, protected: false },
+    { path: "/login", component: Login, protected: false },
+    { path: "/contact", component: Contact, protected: false },
+    { path: "/Register", component: Signup, protected: false },
+    { path: "/doctors", component: Doctors, protected: false },
+    { path: "/donate", component: Donate, protected: false },
+    { path: "/doctors/Cardiologist", component: Cardiologist, protected: false },
+    { path: "/doctors/Neurologist", component: Neurologist, protected: false },
+    { path: "/doctors/Oncologist", component: Oncologist, protected: false },
+    { path: "/doctors/Obstetrician", component: Obstetrician, protected: false },
+    { path: "/doctors/Psychiatrist", component: Psychiatrist, protected: false },
+    { path: "/doctors/GP", component: GeneralPractitioner, protected: false },
+    { path: "/doctors/Dermatologist", component: Dermatologist, protected: false },
+    { path: "/doctors/Orthopedist", component: Orthopedist, protected: false },
+    { path: "/doctors/PlasticSurgeon", component: PlasticSurgeon, protected: false },
+    { path: "/users/profile/me", component: MyAccount, protected: true, allowedRoles: ['patient'] },
+    { path: "/doctors/profile/me", component: Dashboard, protected: true, allowedRoles: ['doctor'] },
 ];
 
 const Layout = () => {
+    const { role } = useContext(authContext);
+
     return (
         <>
             <Header />
             <main>
                 <Routes>
-                    {routes.map(route => (
-                        /* Mapping over each route in the routes array */
-                        <Route key={route.path} path={route.path} element={React.createElement(route.component)} />
-                    ))}
+                    {routes.map((route) => {
+                        const RouteComponent = route.component;
+                        // Check if the route is protected and user has the right role
+                        const routeElement = route.protected ? (
+                            <Route 
+                                key={route.path} 
+                                path={route.path} 
+                                element={
+                                    <ProtectedRoute allowedRoles={route.allowedRoles}>
+                                        <RouteComponent />
+                                    </ProtectedRoute>
+                                } 
+                            />
+                        ) : (
+                            <Route 
+                                key={route.path} 
+                                path={route.path} 
+                                element={<RouteComponent />} 
+                            />
+                        );
+
+                        return routeElement;
+                    })}
                 </Routes>
             </main>
             <Footer />

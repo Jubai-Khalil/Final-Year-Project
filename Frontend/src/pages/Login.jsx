@@ -1,6 +1,10 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useContext} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styling/Login.css";
+import { BASE_URL } from "../config";
+import { toast } from "react-toastify";
+import {authContext} from "../context/AuthContext.jsx";
+import HashLoader from "react-spinners/HashLoader";
 
 const Login = () => {
 
@@ -11,36 +15,55 @@ const Login = () => {
     });
 
     // State hook for storing error messages
-    // this state will be used to display error messages in the future
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
+    const {dispatch} = useContext(authContext)
+
 
     // Handler for input changes, updates formData state when the user types in an input
     const handleInputChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Handler for form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Reset error state each time the form is submitted
-        setError("");
+    const submitHandler = async (event) =>{
+        event.preventDefault();
+        setLoading(true)
 
-        // There's no backend yet, so i'll log the credentials
-        console.log("Login Attempt with: ", formData);
-
-        // In the future, if the API call fails, ill catch the error and set the state
         try {
-            
-            if (!formData.email || !formData.password) {
-                throw new Error("Please fill in all fields");
+            const res = await fetch(`${BASE_URL}/auth/login`, {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+
+            const result = await res.json()
+            if(!res.ok){
+                throw new Error(result.message)
             }
 
-            // If successful, redirect the user or perform some other action
+            dispatch({
+                type:'LOGIN_SUCCESS',
+                payload: {
+                    user:result.data,
+                    token:result.token,
+                    role:result.role,
+                },
+            });
+
+            console.log(result, 'login data');
+
+            setLoading(false)
+            toast.success(result.message)
+            navigate('/home')
+
         } catch (error) {
-            // If an error occurs, set the error message in our state
-            setError(error.message);
+            toast.error(error.message)
+            setLoading(false)
         }
-    };
+    }
 
     return(
         <section className="loginSection">
@@ -48,7 +71,7 @@ const Login = () => {
                 <h3 className="loginHeader">
                     Hello! <span className="loginWelcome"> Welcome</span> Back 👋🏾
                 </h3>
-                <form className="formContainer">
+                <form className="formContainer" onSubmit={submitHandler}>
                     <div>
                     {/* Input for email */}
                         <input type="email" 
@@ -72,7 +95,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <button type="submit" className="loginButton">Login</button>
+                        <button type="submit" className="loginButton">{loading ? <HashLoader color="#ffffff"/> :'Login'}</button>
                     </div> 
                     {/* Link to register page if user doesnt have an account */}
                     <p className="register">

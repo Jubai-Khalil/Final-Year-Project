@@ -1,0 +1,169 @@
+/* Account Container */
+.accountContainer {
+    max-width: 1170px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid Container */
+.profileGridContainer {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2.5rem;
+}
+
+/* Grid Container for medium screens */
+@media (min-width: 768px) {
+    .profileGridContainer {
+        grid-template-columns: 1fr 3fr 0fr;
+    }
+}
+
+/* Padding Container */
+.paddingContainer {
+    padding-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0.375rem;
+}
+
+.paddingContainerMiddle {
+    padding-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0.375rem;
+}
+
+/* Center Container */
+.centerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile Image Container */
+.profileImgContainer {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: black;
+}
+
+/* Profile Image */
+.profileImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+}
+
+/* Profile Text Container */
+.profileTxtContainer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Profile Name */
+.profileName {
+    font-size: 18px;
+    line-height: 30px;
+    color: #181A1E;
+    ;
+    font-weight: bold;
+}
+
+/* Profile Email */
+.profileEmail {
+    color: #262626;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Blood Type */
+.bloodType {
+    margin-left: 0.5rem;
+    color: #181A1E;
+    ;
+    font-size: 22px;
+    line-height: 2rem;
+}
+
+/* Profile Button Container */
+.profileBtnContainer {
+    margin-top: 50px;
+}
+
+/* Profile Button Container for medium screens */
+@media (min-width: 768px) {
+    .profileBtnContainer {
+        margin-top: 15px;
+    }
+}
+
+/* Logout Button */
+.logoutBtn {
+    width: 100%;
+    background-color: #181A1E;
+    padding: 0.75rem;
+    font-size: 16px;
+    line-height: 1.75;
+    border-radius: 0.375rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Delete Account Button */
+.deleteAccBtn {
+    width: 100%;
+    background-color: #e53e3e;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-size: 16px;
+    line-height: 1.75;
+    border-radius: 0.375rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Container styles for centering the buttons */
+.profile-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Base styles for both buttons */
+.button-base {
+    padding: 0.5rem 0.5rem;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid;
+    border-radius: 0.375rem;
+    margin-right: 1.25rem;
+    color: #181A1E;
+    border-color: #181A1E;
+    background-color: #ffd06b;
+}
+
+/* Active styles for the 'My Bookings' button */
+.bookings-button-active {
+    background-color: #6EADFF;
+    color: white;
+    font-weight: 400;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+/* Active styles for the 'Profile Settings' button */
+.settings-button-active {
+    background-color: #6EADFF;
+    color: white;
+    font-weight: 400;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}

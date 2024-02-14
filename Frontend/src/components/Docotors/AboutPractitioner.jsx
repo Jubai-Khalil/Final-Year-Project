@@ -2,17 +2,17 @@ import React from "react";
 import "../../styling/AboutPractitioner.css";
 import doctorsData from "../../assets/data/doctorsData"; 
 
-const CardiologistAbout = ({ doctorId }) => {
+const AboutPractitioner = ({ doctorId }) => {
     // Check if doctorId is provided
     if (!doctorId) {
         return <div>Error: No doctor ID provided.</div>;
     }
 
-    // Find the cardiologist using the doctorId
-    const cardiologist = doctorsData.find(doctor => doctor.id === doctorId);
+    // Find the docotr using the doctorId
+    const practitioner = doctorsData.find(doctor => doctor.id === doctorId);
 
     // Check if a cardiologist is found
-    if (!cardiologist) {
+    if (!practitioner) {
         return <div>Error: Doctor not found.</div>;
     }
 
@@ -22,12 +22,12 @@ const CardiologistAbout = ({ doctorId }) => {
                 <h3>About</h3>
                 <p className="docsAboutText">
                     {/* Display about text, or a placeholder if none is available */}
-                    {cardiologist.aboutText || "No information available."}
+                    {practitioner.aboutText || "No information available."}
                 </p>
                 <h3 className="docsEduHeader">Education</h3>
                 {/*rendering for the education section */}
-                {cardiologist.education && cardiologist.education.length > 0 ? (
-                    cardiologist.education.map((edu, index) => (
+                {practitioner.education && practitioner.education.length > 0 ? (
+                    practitioner.education.map((edu, index) => (
                         <div key={index}>
                             <span className="docsGradYear">
                                 {edu.startDate} - {edu.endDate}
@@ -50,8 +50,8 @@ const CardiologistAbout = ({ doctorId }) => {
                 )}
                 <h3 className="docsEduHeader">Experience</h3>
                 <ul className="experienceCardContainer">
-                    {cardiologist.experience && cardiologist.experience.length > 0 ? (
-                        cardiologist.experience.map((exp, index) => (
+                    {practitioner.experience && practitioner.experience.length > 0 ? (
+                        practitioner.experience.map((exp, index) => (
                             <li key={index} className="listStyle">
                                 <span className="docsExperienceCard">
                                     {/* Displaying the experience date range */}
@@ -73,4 +73,4 @@ const CardiologistAbout = ({ doctorId }) => {
     );
 };
 
-export default CardiologistAbout;
+export default AboutPractitioner;

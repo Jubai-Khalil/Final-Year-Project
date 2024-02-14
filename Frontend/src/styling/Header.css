@@ -51,13 +51,14 @@
 
 /* Container for the user icon */
 .userIconContainer{ 
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
 }
 
 /* Styling for the user icon image */
 .userIcon{
+    display: flex;
     transform: scale(0.90);
     height: 100px;
     border-radius: 50px;
@@ -100,4 +101,9 @@
     text-decoration: none;
 }
 
+/* styling for the name displayed after logging in */
+.userName {
+    font-size: 21px;
+    font-weight: 600;
+}
 

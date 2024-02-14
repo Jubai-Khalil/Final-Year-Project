@@ -24,6 +24,16 @@ That's all! React should be up and running.
 
 To close the running application type 'q' in the terminal which is running the react application.
 
+Starting the connection to database
+-------------------------------
+Before starting, navigate to the folder 'Backend' in a new terminal. Then:
+
+- Run npm start --> If this doesn't work follow the below steps.
+
+- The terminal should providelog information as the connection is establishing a port
+
+That's all! connection should be good to go
+
 Additional Information
 ----------------------
 Google maps embed API key has been included for ease of access purposes.

@@ -13,10 +13,10 @@ Starting the React applications
 -------------------------------
 Before starting, navigate to the folder 'Frontend' in a new terminal. Then:
 
-- Run npm run dev --> If this doesn't work follow the below steps.
+- Run: npm run dev --> If this doesn't work follow the below steps.
 
-- Run npm install to install the necessary node modules
-- Run npm run dev
+- Run: npm install or npm i to install the necessary node modules
+- Run: npm run dev
 
 - The website should now open automatically. If not, click on the provided Link in the terminal. Normally http://localhost:xxxx/
 
@@ -28,7 +28,10 @@ Starting the connection to database
 -------------------------------
 Before starting, navigate to the folder 'Backend' in a new terminal. Then:
 
-- Run npm start --> If this doesn't work follow the below steps.
+- Run: npm start --> If this doesn't work follow the below steps.
+
+- Run: npm install express install the necessary node modules
+- Run: npm start
 
 - The terminal should providelog information as the connection is establishing a port
 

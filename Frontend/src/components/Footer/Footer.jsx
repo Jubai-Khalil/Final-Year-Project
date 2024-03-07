@@ -1,79 +1,149 @@
-import React from "react";
-import "../../styling/Footer.css";
-import { Link } from "react-router-dom";
-import footerLogo from "../../assets/images/footerLogo.png";
-import {BsInstagram} from "react-icons/bs";
-import {BsYoutube} from "react-icons/bs";
-import {BsLinkedin} from "react-icons/bs";
-import {BsGithub} from "react-icons/bs";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/images/logo.png'
+import {RiLinkedinFill} from 'react-icons/ri'
+import {AiFillYoutube, AiFillGithub, AiOutlineInstagram, AiFillInstagram} from 'react-icons/ai'
 
-// Array of social media links and their corresponding icons
 const socialLinks = [
     {
-        path: "https://www.youtube.com",
-        icon: <BsYoutube className="socialIcons"/>
+        path: "https://www.google.com/",
+        icon: <AiFillYoutube className='group-hover:text-white w-4 h-5' />,
     },
     {
-        path: "https://github.com",
-        icon: <BsGithub className="socialIcons"/>
+        path: "https://www.google.com/",
+        icon: <AiFillGithub className='group-hover:text-white w-4 h-5' />,
     },
     {
-        path: "https://www.instagram.com",
-        icon: <BsInstagram className="socialIcons"/>
+        path: "https://www.google.com/",
+        icon: <AiFillInstagram className='group-hover:text-white w-4 h-5' />,
     },
     {
-        path: "https://www.linkedin.com",
-        icon:  <BsLinkedin className="socialIcons"/>
+        path: "https://www.google.com/",
+        icon: <RiLinkedinFill className='group-hover:text-white w-4 h-5' />,
+    }
+]
+
+const quickLinks01 = [
+    {
+        path: '/home',
+        display: 'home',
     },
-];
+    {
+        path: '/',
+        display: 'About Us',
+    },
+    {
+        path: '/services',
+        display: 'Services',
+    },
+    {
+        path: '/',
+        display: "Blog"
+    }
+]
+
+const quickLinks02 = [
+    {
+        path: "/find-a-doctor",
+        display: "Find A Doctor"
+    },
+    {
+        path: "/",
+        display: "Request an Appointment"
+    },
+    {
+        path: "/",
+        display: "Find A Location"
+    },
+    {
+        path: "/",
+        display: "Get a Opinion"
+    },
+]
+
+const quickLinks03 = [
+    {
+        path: "/",
+        display: "Donate"
+    },
+    {
+        path: "/contact",
+        display: "Contact Us"
+    }
+]
 
 const Footer = () => {
 
-    const year = new Date().getFullYear()
+    const year =  new Date().getFullYear()
 
     return (
-        <footer className="footerSection">
-            <div className="footerContainer">
-                <div className="footerInnerContainer">
+        <footer>
+            <div className="container">
+                <div className='flex justify-between flex-col md:flex-row flex-wrap gap-[30px]'>
                     <div>
-                        <img src={footerLogo} alt="" />
-                        {/* Copyright notice with dynamic year */}
-                        <p className="footerCopyright">
-                            Copyright © {year} developed by Jubai-Khalil
+                        <img src={logo} alt="" />
+                        <p className='text-[16px] leading-7 font-400 text-textColor mt-4'>
+                            Copyright {year} developed by Muhibur Rahman all rights reserved
                         </p>
-                        <div className="footerIcons">
-                            {/* Mapping through socialLinks array to display each social media link */}
+                        <div className='flex items-center gap-3 mt-4'>
                             {socialLinks.map((link, index) => (
-                            <a href={link.path} key={index} target="_blank" rel="noopener noreferrer" className="socialIcons">
-                            {link.icon}
-                            </a>
+                                <Link to={link.path} key={index} className='w-9 h-9 border border-solid border-[#181A1E] rounded-full flex items-center justify-center group hover:bg-primaryColor hover:border-none'>
+                                    {link.icon}
+                                </Link>
                             ))}
                         </div>
                     </div>
-                </div>
-                <div className="footerInnerContainer">
-                    <div className="footerInnerContainerLinks">
-                        <h2>
+
+                    <div>
+                        <h2 className='text-[20px] leading-[30px] font-[700] mb-6 text-headingColor'>
                             Quick Links
                         </h2>
-                        <Link to="/Home" className="footerLinkWrapper">Home</Link>
-                        <Link to="/About" className="footerLinkWrapper">About Us</Link>
-                        <Link to="/Doctors" className="footerLinkWrapper">Find A Doctor</Link>
+
+                        <ul>
+                            {quickLinks01.map((item, index) => (
+                                <li key={index} className='mb-4'>
+                                    <Link to={item.path} className='text-[16px] leading-7 font-400 text-textColor'>
+                                        {item.display}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
-                <div className="footerInnerContainer">
-                    <div className="footerInnerContainerLinks">
-                        <h2>
+                    <div>
+                        <h2 className='text-[20px] leading-[30px] font-[700] mb-6 text-headingColor'>
+                            I want to:
+                        </h2>
+
+                        <ul>
+                            {quickLinks02.map((item, index) => (
+                                <li key={index} className='mb-4'>
+                                    <Link to={item.path} className='text-[16px] leading-7 font-400 text-textColor'>
+                                        {item.display}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 className='text-[20px] leading-[30px] font-[700] mb-6 text-headingColor'>
                             Support
                         </h2>
-                        <Link to="/Donate" className="footerLinkWrapper">Donate</Link>
-                        <Link to="/Contact" className="footerLinkWrapper">Contact Us</Link>
+
+                        <ul>
+                            {quickLinks03.map((item, index) => (
+                                <li key={index} className='mb-4'>
+                                    <Link to={item.path} className='text-[16px] leading-7 font-400 text-textColor'>
+                                        {item.display}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+                    
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
-
+export default Footer

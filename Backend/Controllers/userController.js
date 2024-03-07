@@ -1,61 +1,135 @@
 import User from "../models/UserSchema.js";
-import Booking from "../models/BookingSchema.js";
+import BookingSchema from "../models/BookingSchema.js";
 import Doctor from "../models/DoctorSchema.js";
 
-// helper function to handle HTTP responses.
-const handleResponse = (res, success, status, message, data = null) => {
-    // Send a JSON response with the given parameters.
-    res.status(status).json({ success, message, ...(data ? { data } : {}) });
-};
-
-// function to update a user.
 export const updateUser = async (req, res) => {
-    try {
-        // Update the user with the given ID using data from the request body.
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
-        // Call handleResponse to send a success response with the updated user data.
-        handleResponse(res, true, 200, "Successfully updated", updatedUser);
-    } catch (error) {
-        // On error, send a failure response.
-        handleResponse(res, false, 500, "Failed to update");
-    }
+  const id = req.params.id;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { $set: req.body },
+      { new: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully updated",
+      data: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({
+      sucess: false,
+      message: "Failed to update",
+    });
+  }
 };
 
-// function to delete a user.
 export const deleteUser = async (req, res) => {
-    try {
-        // Delete the user with the given ID.
-        await User.findByIdAndDelete(req.params.id);
-        // Send a success response indicating the user was deleted.
-        handleResponse(res, true, 200, "Deleted Successfully");
-    } catch (error) {
-        // On error, send a failure response.
-        handleResponse(res, false, 500, "Failed to delete");
-    }
+  const id = req.params.id;
+
+  try {
+    await User.findByIdAndDelete(id);
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully deleted",
+    });
+  } catch (error) {
+    res.status(500).json({
+      sucess: false,
+      message: "Failed to delete",
+    });
+  }
 };
 
-// function to get a single user.
 export const getSingleUser = async (req, res) => {
-    try {
-        // Find the user with the given ID.
-        const user = await User.findById(req.params.id);
-        // Send a success response with the found user data.
-        handleResponse(res, true, 200, "Successfully found user", user);
-    } catch (error) {
-        // On error, send a failure response.
-        handleResponse(res, false, 404, "No user found");
-    }
+  const id = req.params.id;
+
+  try {
+    const user = await User.findById(id).select("-password");
+
+    res.status(200).json({
+      success: true,
+      message: "User found",
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      sucess: false,
+      message: "No user found",
+    });
+  }
 };
 
-//  function to get all users.
-export const getAllUsers = async (req, res) => {
-    try {
-        // Find all users in the database.
-        const users = await User.find({});
-        // Send a success response with the list of all users.
-        handleResponse(res, true, 200, "Successfully found all users", users);
-    } catch (error) {
-        // On error, send a failure response.
-        handleResponse(res, false, 404, "No users found");
+export const getAllUser = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const user = await User.find({}).select("-password");
+
+    res.status(200).json({
+      success: true,
+      message: "Users found",
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      sucess: false,
+      message: "Not found",
+    });
+  }
+};
+
+export const getUserProfile = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
+
+    const { password, ...rest } = user._doc;
+
+    res.status(200).json({
+      success: true,
+      message: "Profile info is getting",
+      data: { ...rest },
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong, cannot get",
+    });
+  }
+};
+
+export const getMyAppointments = async (req, res) => {
+  try {
+    // step -1 : retrieve appointments from booking for specific user
+    const bookings = await BookingSchema.find({ user: req.userId });
+
+    // step -2 : extract doctor ids from appointment bookings
+    const doctorIds = bookings.map((el) => el.doctor.id);
+    // step -3 : retrienve doctos using doctor ids
+    const doctors = await Doctor.find({ _id: { $in: doctorIds } }).select(
+      "-password"
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Appointments are getting",
+      data: doctors,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong, cannot get",
+    });
+  }
 };

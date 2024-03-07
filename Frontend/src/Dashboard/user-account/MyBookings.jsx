@@ -1,53 +1,36 @@
-import React, { useEffect, useState, useContext } from "react";
-import { authContext } from "../../context/AuthContext"; 
-import { BASE_URL } from "../../config"; 
-import { toast } from 'react-toastify';
+import useFetchData from "../../hooks/useFetchData";
+import { BASE_URL } from "../../config";
+import DoctorCard from "./../../components/Doctors/DoctorCard";
+import Loading from "../../components/Loader/Loading";
+import Error from "../../components/Error/Error";
 
 const MyBookings = () => {
-    const [bookings, setBookings] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const token = localStorage.getItem('token'); 
+  const {
+    data: appointments,
+    loading,
+    error,
+  } = useFetchData(`${BASE_URL}/users/appointments/my-appointments`);
+  return (
+    <div>
+      {loading && !error && <Loading />}
 
-    useEffect(() => {
-        const fetchBookings = async () => {
-            try {
-                const response = await fetch(`${BASE_URL}/users/appointments/my-appointments`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                    },
-                });
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.message || "Failed to fetch bookings.");
-                }
-                setBookings(data.data || []);
-            } catch (error) {
-                toast.error(error.message || "An error occurred while fetching bookings.");
-            } finally {
-                setIsLoading(false);
-            }
-        };
+      {error && !loading && <Error errMessage={error} />}
 
-        fetchBookings();
-    }, [token]); // Dependency array ensures fetchBookings runs only once or when token changes
-
-    return (
-        <div>
-            {isLoading ? (
-                <div>Loading your bookings...</div>
-            ) : bookings.length > 0 ? (
-                bookings.map((booking, index) => (
-                    <div key={index}>
-                        {/* Display booking details here */}
-                        Doctor: {booking.doctor.name} - Date: {booking.date}
-                    </div>
-                ))
-            ) : (
-                <div>You have no bookings yet!</div>
-            )}
+      {!loading && !error && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-[30px]">
+          {appointments.map((doctor) => (
+            <DoctorCard doctor={doctor} key={doctor._id} />
+          ))}
         </div>
-    );
+      )}
+
+      {!loading && !error && appointments.length === 0 && (
+        <h2 className="mt-5 text-center leading-7 text-[20px] font-semibold text-primaryColor">
+          You did not book any doctor yet!
+        </h2>
+      )}
+    </div>
+  );
 };
 
 export default MyBookings;

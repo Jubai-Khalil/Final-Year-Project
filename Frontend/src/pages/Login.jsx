@@ -1,110 +1,122 @@
-import React, {useState, useContext} from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../styling/Login.css";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
-import {authContext} from "../context/AuthContext.jsx";
-import HashLoader from "react-spinners/HashLoader";
+import { AuthContext } from "../context/AuthContext.jsx";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-    // State hook for managing form data with initial state for email and password
-    const [formData, setFormData] = useState({
-        email: "",
-        password: ""
-    });
+  const [loading, setLoading] = useState(false);
 
-    // State hook for storing error messages
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
-    const {dispatch} = useContext(authContext)
+  const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
 
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    // Handler for input changes, updates formData state when the user types in an input
-    const handleInputChange = e => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    setLoading(true);
 
-    const submitHandler = async (event) =>{
-        event.preventDefault();
-        setLoading(true)
+    try {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        try {
-            const res = await fetch(`${BASE_URL}/auth/login`, {
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
+      const result = await res.json();
 
-            const result = await res.json()
-            if(!res.ok){
-                throw new Error(result.message)
-            }
+      if (!res.ok) {
+        throw new Error(result.message);
+      }
 
-            dispatch({
-                type:'LOGIN_SUCCESS',
-                payload: {
-                    user:result.data,
-                    token:result.token,
-                    role:result.role,
-                },
-            });
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: result.data,
+          token: result.token,
+          role: result.role,
+        },
+      });
 
-            console.log(result, 'login data');
+      console.log(result, "login data");
 
-            setLoading(false)
-            toast.success(result.message)
-            navigate('/home')
-
-        } catch (error) {
-            toast.error(error.message)
-            setLoading(false)
-        }
+      setLoading(false);
+      toast.success(result.message);
+      if (result.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/home");
+      }
+    } catch (err) {
+      toast.error(err.message);
+      setLoading(false);
     }
+  };
 
-    return(
-        <section className="loginSection">
-            <div className="loginContainer">
-                <h3 className="loginHeader">
-                    Hello! <span className="loginWelcome"> Welcome</span> Back 👋🏾
-                </h3>
-                <form className="formContainer" onSubmit={submitHandler}>
-                    <div>
-                    {/* Input for email */}
-                        <input type="email" 
-                        placeholder="Enter Your Email" 
-                        name="email" 
-                        value={formData.email} 
-                        onChange={handleInputChange}
-                        className="loginInput"
-                        required
-                        />
-                    </div>
-                    <div>
-                    {/* Input for password */}
-                        <input type="password" 
-                        placeholder="Enter Your Password" 
-                        name="password" 
-                        value={formData.password} 
-                        onChange={handleInputChange}
-                        className="loginInput"
-                        required
-                        />
-                    </div>
-                    <div>
-                        <button type="submit" className="loginButton">{loading ? <HashLoader color="#ffffff"/> :'Login'}</button>
-                    </div> 
-                    {/* Link to register page if user doesnt have an account */}
-                    <p className="register">
-                        Don't Have An Account? <Link to="/Register" className="loginLinkWrapper">Register</Link>
-                    </p>
-                </form>
-            </div>
-        </section>
-    );
+  return (
+    <section className="px-5 xl:px-0">
+      <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md md:p-10">
+        <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
+          Hello!
+          <span className="text-primaryColor">{" Welcome "}</span>
+          Back
+        </h3>
+
+        <form className="py-4 md:py-0" onSubmit={submitHandler}>
+          <div className="mb-5">
+            <input
+              type="email"
+              placeholder="Enter Your Email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+              required
+            />
+          </div>
+
+          <div className="mt-7">
+            <button
+              disabled={loading && true}
+              type="submit"
+              className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3"
+            >
+              {loading ? <ClipLoader size={35} color="#ffffff" /> : "Submit"}
+            </button>
+          </div>
+
+          <p className="mt-5 text-textColor text-center">
+            Don't have an account?
+            <Link to="/register" className="text-primaryColor font-medium ml-1">
+              Register
+            </Link>
+          </p>
+        </form>
+      </div>
+    </section>
+  );
 };
 
-export default Login
+export default Login;

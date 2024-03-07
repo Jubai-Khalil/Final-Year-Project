@@ -1,32 +1,21 @@
-// Constants for Cloudinary API
-const UPLOAD_PRESET = 'upload'; 
-const CLOUD_NAME = 'dcbbqb2ef'; 
+const upload_preset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+const cloud_name = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME
 
-// uploads an image to Cloudinary.
-const uploadImageToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', UPLOAD_PRESET);
+const uploadImageCloudinary = async file => {
+    const uploadData = new FormData()
 
-    try {
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-            method: 'POST',
-            body: formData,
-        });
+    uploadData.append('file', file)
+    uploadData.append('upload_preset', upload_preset)
+    uploadData.append('cloud_name', cloud_name)
 
-        if (!response.ok) {
-            // Convert non-200 responses into errors
-            const errorData = await response.json();
-            throw new Error(`Failed to upload image: ${errorData.error?.message || response.statusText}`);
-        }
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
+        method: 'post',
+        body: uploadData
+    })
 
-        // Only parse JSON and return the URL if the response was successful
-        const data = await response.json();
-        return data.secure_url; 
-    } catch (error) {
-        // Rethrow or handle the error as needed
-        throw error;
-    }
-};
+    const data = await res.json()
 
-export default uploadImageToCloudinary;
+    return data
+}
+
+export default uploadImageCloudinary

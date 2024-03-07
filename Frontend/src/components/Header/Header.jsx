@@ -1,96 +1,127 @@
-import React, { useState } from "react";
-import "../../styling/Header.css" 
-import logo from "../../assets/images/logo.png"
-import userIcon from "../../assets/images/userIcon.png";
-import { NavLink, Link } from "react-router-dom";
-import {BiMenu} from "react-icons/bi";
-import { authContext } from "../../context/AuthContext";
-import { useContext, useEffect, useRef } from "react";
+import { useRef, useContext } from "react";
+import logo from "../../assets/images/logo.png";
+import userImg from "../../assets/images/avatar-icon.png";
+import { Link } from "react-router-dom";
+import { BiMenu } from "react-icons/bi";
+import { AuthContext } from "../../context/AuthContext";
 
-// Array of objects representing navigation links
 const navLinks = [
-    {
-        path: '/Home',
-        display:'Home'
-    },
-    {
-        path: '/About',
-        display:'About'
-    },
-    {
-        path: '/Doctors',
-        display:'Find a Doctor'
-    },
-    {
-        path: '/Contact',
-        display:'Contact'
-    },
+  {
+    path: "/home",
+    display: "Home",
+  },
+  {
+    path: "/doctors",
+    display: "Find a Doctor",
+  },
+  {
+    path: "/services",
+    display: "Services",
+  },
+  {
+    path: "/contact",
+    display: "Contact",
+  },
 ];
 
-
 const Header = () => {
-    // Function to map over NavLinks and render them as NavLink components
-    const headerRef = useRef(null)
-    const menuRef = useRef(null)
-    const {user, role, token} = useContext(authContext)
-    
-    const renderNavLinks = () => {
-        return navLinks.map((link, index) => (
-            <li key={index}>
-                <NavLink className="headerlinkWrapper"
-                    to={link.path}
-                    activeClassName="active-link"
-                    exact
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const { user, role, token } = useContext(AuthContext);
+  console.log(user);
+  const handleStickyHeader = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky_header");
+      } else {
+        headerRef.current.classList.remove("sticky_header");
+      }
+    });
+  };
+
+  useRef(() => {
+    handleStickyHeader();
+
+    return () => window.removeEventListener("scroll", handleStickyHeader);
+  }, []);
+
+  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
+
+  return (
+    <header className="header flex items-center" ref={headerRef}>
+      <div className="container">
+        <div className="flex items-center justify-between">
+          {/* logo */}
+          <div>
+            <img src={logo} alt="logo" />
+          </div>
+
+          {/* menu */}
+          {role !== "admin" && (
+            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+              <ul className="menu flex items-center gap-[2.7rem]">
+                {navLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.path}
+                      className={(navClass) =>
+                        navClass.isActive
+                          ? "text-primaryColor text-[16px] leading-7 font-[600]"
+                          : "text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor"
+                      }
                     >
-                    {link.display}
-            </NavLink>
-            </li>
-        ));
-    };
-
-    const [hovering, setHovering] = useState(false);
-
-    return (
-        <header className="headerSection">
-            <div className="headerContainer">
-                <div className="header">
-                    {/* ============ logo ============ */}
-                    <div>
-                        <img src={logo} alt="" className="headerLogo"></img>
-                    </div>
-                    {/* ============ menu ============ */}
-                    <div>
-                        <ul className="menuList">{renderNavLinks()}</ul>
-                    </div>
-                    {/* ============ dashboard icon ============ */}
-                    <div className="userIconContainer">
-                        {
-                        token && user ? (
-                            <div className="userDetailsContainer"> 
-                                <Link to={`${role === 'doctor' ? '/doctors/profile/me' : '/users/profile/me'}`} className="loginlinkWrapper">
-                                    <h2 
-                                        className="userName"
-                                        onMouseEnter={() => setHovering(true)}
-                                        onMouseLeave={() => setHovering(false)}
-                                        style={hovering ? { color: '#08CAAD' } : {}}
-                                    >
-                                        {hovering ? 'View Account' : `${user?.firstname} ${user?.surname}`}
-                                    </h2>
-                                </Link>
-                            </div>
-                            ) : 
-                            <Link to="/login" className="loginlinkWrapper">
-                            <button className="loginButton">Login</button>
-                            </Link>
-                        }
-                        <span hidden>
-                            <BiMenu className="hamburgerMenu"/>
-                        </span>
-                    </div>
-                </div>
+                      {link.display}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-        </header>
-    ); 
+          )}
+
+          {/* nav right */}
+          <div className="flex items-center gap-4">
+            {token && user ? (
+              <div>
+                <Link
+                  className="flex items-center gap-2"
+                  to={`${
+                    role === "doctor"
+                      ? "/doctors/profile/me"
+                      : "/users/profile/me"
+                  }`}
+                >
+                  <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
+                    <img
+                      src={user?.photo}
+                      className="w-full rounded-full"
+                      alt=""
+                    />
+                  </figure>
+
+                  <h2>{user?.name}</h2>
+                </Link>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button
+                  type="submit"
+                  className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]"
+                >
+                  Login
+                </button>
+              </Link>
+            )}
+            <span className="md:hidden" onClick={toggleMenu}>
+              <BiMenu classNamew-6 h-6 cursor-pointer />
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;

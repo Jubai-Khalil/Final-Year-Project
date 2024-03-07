@@ -1,18 +1,21 @@
-import { updateUser, deleteUser, getAllUsers, getSingleUser } from "../Controllers/userController.js";
-import express from 'express';
-import {authenticate, restrict} from "../Auth/verifyToken.js"
+import express from 'express'
+import {
+    updateUser,
+    deleteUser,
+    getAllUser,
+    getSingleUser,
+    getUserProfile,
+    getMyAppointments,
+} from '../Controllers/userController.js'
+import { authenticate, restrict } from "../auth/verifyToken.js"
+
 const router = express.Router()
 
-// Define a GET route to fetch a single user by ID.
-router.get("/:id",authenticate, restrict(["patient"]), getSingleUser)
-
-// Define a GET route to fetch all users.
-router.get("/", authenticate, restrict(["admin"]), getAllUsers)
-
-// Define a PUT route to update a user by ID.
-router.put("/:id", authenticate, restrict(["patient"]), updateUser)
-
-// Define a DELETE route to delete a user by ID.
-router.delete("/:id",authenticate, restrict(["patient"]), deleteUser)
+router.get("/:id", authenticate, restrict(['patient']), getSingleUser)
+router.get("/", authenticate, restrict(['admin']), getAllUser)
+router.put("/:id", authenticate, restrict(['patient']), updateUser)
+router.delete("/:id", authenticate, restrict(['patient']), deleteUser)
+router.get("/profile/me", authenticate, restrict(['patient']), getUserProfile)
+router.get("/appointments/my-appointments", authenticate, restrict(['patient']), getMyAppointments)
 
 export default router

@@ -1,320 +1,328 @@
-/* Some of the headers and text for the webpage have been generated, enhanced or extended using Ai tools*/
-
 import React from "react";
-import "../styling/Home.css";
-import "../styling/FaqSection.css";
-import "../styling/Testimonial.css";
-import heroImage from "../assets/images/heroImage.png";
-import icon1 from "../assets/images/icon1.png";
-import icon2 from "../assets/images/icon2.png";
-import icon3 from "../assets/images/icon3.png";
-import doctorsData from "../assets/data/doctorsData.js";
-import servicesData from "../assets/data/servicesData.js";
-import featImg from "../assets/images/featImg.png";
-import aboutIcon from "../assets/images/aboutIcon.png";
-import videoIcon from "../assets/images/videoIcon.png";
-import faqImg from "../assets/images/faqImg.png";
 import { Link } from "react-router-dom";
+
+import heroImg01 from "../assets/images/hero-img01.png";
+import heroImg02 from "../assets/images/hero-img02.png";
+import heroImg03 from "../assets/images/hero-img03.png";
+import icon01 from "../assets/images/icon01.png";
+import icon02 from "../assets/images/icon02.png";
+import icon03 from "../assets/images/icon03.png";
+import featureImg from "../assets/images/feature-img.png";
+import faqImg from "../assets/images/faq-img.png";
+import videoIcon from "../assets/images/video-icon.png";
+import avatarIcon from "../assets/images/avatar-icon.png";
+
 import { BsArrowRight } from "react-icons/bs";
-import { BsFillStarFill } from "react-icons/bs";
-import FaqSection from "../components/Faqs/FaqSection";
-import Testimonial from "../components/Testimonials/Testimonial";
 
+import About from "../components/About/About";
+import ServicesList from "../components/services/ServicesList";
+import DoctorList from "../components/Doctors/DoctorList";
+import FaqList from "../components/Faq/FaqList";
+import Testimonial from "../components/Testimonial/Testimonial";
 
-// something cool would be to randomly generate numbers between 1 and total number of doctors (without duplicating) so that it changes the doctors around but for now just use 1,2,3 until i have more doctors
-// abstract each section into its own sections for better modularity and maintainability
 const Home = () => {
+  return (
+    <>
+      {/* hero section */}
+      <section className="hero_section pt-[60px] 2xl:h-[800px]">
+        <div className="container">
+          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
+            {/* hero content */}
+            <div>
+              <div className="lg:w-[570px]">
+                <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[60px] md:leading-[70px]">
+                  We aid patients in living a healthier and longer life.
+                </h1>
+                <p className="text_para">
+                  Through our dedicated care and comprehensive support, we
+                  empower patients to embrace a lifestyle conducive to optimal
+                  health and longevity. Our mission is to guide individuals on
+                  their journey towards a vibrant and fulfilling life, marked by
+                  vitality and well-being
+                </p>
 
-    // Slice the first three doctors from doctorsData for doctors theme section
-    const displayedDoctors = doctorsData.slice(0, 3);
+                <button className="btn">Request an Appointment</button>
+              </div>
+              {/* hero counter */}
+              <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
+                <div className="">
+                  <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
+                    30+
+                  </h2>
+                  <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-14px]"></span>
+                  <p className="text_para">Years of Experience</p>
+                </div>
 
-    return  (
-        <>
-        {/* ============ hero section ============ */}
-        <section className="heroSection">
-        <div className="heroContainer">
-                    <div className="heroInnerContainer">
-                        <div className="heroImgContainer">
-                            <img src={heroImage} alt="" className="heroImg"/> {/*© [Pixel-Shot] / Adobe Stock*/}
-                        </div>
-        {/* ============ hero content ============ */}          
-                        <div className="heroHeaderContainer">
-                            <h2 className="heroHeader">We're Here To Help You Live A Happy, Healthy Life.</h2>
-                            <p className="heroText">
-                                Our mission extends beyond providing exceptional medical care—it’s about enabling you to embrace life to the fullest, 
-                                with the best health possible. We foster a supportive environment that encourages healing and growth. Our team is here for 
-                                you every step of the way, offering guidance, support, and a listening ear when you need it.
-                            </p> 
-                            <div className="counterSection">
-                                <div>
-                                    <h2 className="counterContent">25+</h2>
-                                    <span className="counterUnderlineOne"></span>
-                                    <p className="counterText">Years Of Experience</p>
-                                </div>
-                                <div>
-                                    <h2 className="counterContent">24/7</h2>
-                                    <span className="counterUnderlineTwo"></span>
-                                    <p className="counterText">Urgent Care Service</p>
-                                </div>
-                                <div>
-                                    <h2 className="counterContent">100%</h2>
-                                    <span className="counterUnderlineThree"></span>
-                                    <p className="counterText">Patient Satisfaction</p>
-                                </div>
-                            </div>
-                            <Link to="/Doctors" className="linkWrapper">
-                            <button className="requestButton">Request Appointment</button>
-                            </Link>
-                        </div>
-                    </div> 
+                <div className="">
+                  <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
+                    15+
+                  </h2>
+                  <span className="w-[100px] h-2 bg-purpleColor rounded-full block mt-[-14px]"></span>
+                  <p className="text_para">Clinic Location</p>
                 </div>
-        </section>
-        {/* ============ how section ============ */}
-            <section>
-                <div className="howSection">
-                    <div className="howSectionContainer">
-                        <h2 className="howHeader">
-                            Providing The Best Medical Services
-                        </h2>
-                        <p className="howText">
-                            Our team is dedicated to providing the best medical services for your needs. 
-                            From routine checkups to complex surgeries and everything in between.
-                        </p>
-                    </div>
-                    <div className="howIconsContainer">
-                        <div className="howInnerContainer">
-                            <div className="howIcon1">
-                                <img src={icon1} alt=""/> {/*© [robu_s] / Adobe Stock*/}
-                            </div>
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Find A Doctor
-                                </h2>
-                                <p className="iconTextContents">
-                                World-class care, accessible to all. At the heart of our health system lies a commitment to 
-                                deliver unmatched, expert healthcare services. From our state-of-the-art labs to our well-equipped clinics.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="howInnerContainer">
-                            <div className="howIcon2">
-                                <img src={icon2} alt=""/> {/*© [Rogatnev] / Adobe Stock*/}
-                            </div>
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Pick A Location
-                                </h2>
-                                <p className="iconTextContents">
-                                Live your best life with our support! If you choose visit any of our numerous clinics
-                                Our staff's vast expertise ensures that you're in capable hands. With branches all over, 
-                                we're just around the corner.
-                                </p>
-                                <Link to="/Contact" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="howInnerContainer">
-                            <div className="howIcon3">
-                                <img src={icon3} alt=""/> {/*© [Mykyta] / Adobe Stock*/}
-                            </div>
-                            <div className="iconHeader">
-                                <h2 className="iconHeaderContents">
-                                    Book An Appointment
-                                </h2>
-                                <p className="iconTextContents">
-                                Schedule your appointment with us today and discover unparalleled care. 
-                                Our dedicated professionals are committed to providing treatments 
-                                and services tailored specifically to your needs.
-                                </p>
-                                <Link to="/Doctors" className="arrowContainer">
-                                    <BsArrowRight className="arrowIcon"/>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+
+                <div className="">
+                  <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
+                    100%
+                  </h2>
+                  <span className="w-[100px] h-2 bg-irisBlueColor rounded-full block mt-[-14px]"></span>
+                  <p className="text_para">Patient Satisfaction</p>
                 </div>
-            </section>
-        {/* ============ about image ============ */}        
-            <section>
-                <div className="aboutContainer">
-                    <div className="aboutInnerContainer">
-                        <div className="aboutImgContainer">
-                            <img src={aboutIcon} alt="" className="aboutImg"/> {/*© [Pixel-Shot] / Adobe Stock*/}
-                        </div>
-        {/* ============ about content ============ */}          
-                        <div className="aboutHeaderContainer">
-                            <h2 className="aboutHeader">Committed To Making A Difference And Setting The Gold Standard</h2>
-                            <p className="aboutText">
-                            For over 2 decades, a testament to our unwavering commitment and excellence in healthcare, 
-                            both The Guardian and The Times have honored us with their recognition. Being consistently 
-                            spotlighted by such prestigious publications not only solidifies our reputation but also reinforces 
-                            our dedication to providing unparalleled care.
-                            </p> 
-                            <p className="aboutText">
-                            Every sunrise brings with it a renewed commitment to excellence. For us, 'our best' is not a static 
-                            benchmark, but an ever-evolving standard we ardently chase each day. Our primary focus is the well-being 
-                            of our patients, and this guides our every action and decision. Rather than resting on the laurels of past 
-                            achievements, we maintain a forward-facing perspective, constantly questioning, "What more can we do for our patients tomorrow?"
-                            </p>
-                            <Link to="/About" className="linkWrapper">
-                            <button className="learnMoreButton">Learn More</button>
-                            </Link>
-                        </div>
-                    </div> 
+              </div>
+            </div>
+            {/* hero content */}
+            <div className="flex gap-[30px] justify-end">
+              <div>
+                <img
+                  className="w-full rounded-xl max-w-[340px] h-[500px] object-cover border-2 border-primaryColor"
+                  src={
+                    "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=640:*"
+                  }
+                  alt=""
+                />
+              </div>
+              <div className="mt-[30px]">
+                <img
+                  src={
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQms57yS4Scn-FT82o5ctUMZz3FvU6LStCTGiXjDJUo5L8SzulHjk2yAq8aHN9OO60QK-k&usqp=CAU"
+                  }
+                  alt=""
+                  className="w-full rounded-xl mb-[30px] object-cover border-2 border-primaryColor"
+                />
+                <img
+                  src={
+                    "https://familydoctor.org/wp-content/uploads/2018/02/41808433_l.jpg"
+                  }
+                  alt=""
+                  className="w-full rounded-xl max-w-[300px] object-cover border-2 border-primaryColor"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="lg:w-[470px] mx-auto">
+            <h2 className="heading text-center">
+              Offering top-notch medical care
+            </h2>
+            <p className="text_para text-center">
+              Top-tier healthcare available to all. Our health system delivers
+              unparalleled, expert medical services.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]">
+            <div className="py-[30px] px-5">
+              <div className="flex items-center justify-center">
+                <img src={icon01} alt="" />
+              </div>
+
+              <div className="mt-[30px]">
+                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                  Find a Doctor
+                </h2>
+                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
+                  Top-tier healthcare available to all. Our health system
+                  delivers unparalleled, expert medical services.
+                </p>
+
+                <Link
+                  to="/doctors"
+                  className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none"
+                >
+                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                </Link>
+              </div>
+            </div>
+            <div className="py-[30px] px-5">
+              <div className="flex items-center justify-center">
+                <img src={icon02} alt="" />
+              </div>
+
+              <div className="mt-[30px]">
+                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                  Find a Location
+                </h2>
+                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
+                  Top-tier healthcare available to all. Our health system
+                  delivers unparalleled, expert medical services.
+                </p>
+
+                <Link
+                  to="/doctors"
+                  className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none"
+                >
+                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                </Link>
+              </div>
+            </div>
+            <div className="py-[30px] px-5">
+              <div className="flex items-center justify-center">
+                <img src={icon03} alt="" />
+              </div>
+
+              <div className="mt-[30px]">
+                <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
+                  Book Appointment
+                </h2>
+                <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
+                  Top-tier healthcare available to all. Our health system
+                  delivers unparalleled, expert medical services.
+                </p>
+
+                <Link
+                  to="/doctors"
+                  className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none"
+                >
+                  <BsArrowRight className="group-hover:text-white w-6 h-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <About />
+
+      {/* services section */}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">Our medical services</h2>
+            <p className="text_para text-center">
+              World-class care for everyone. Our health System offers unmatched,
+              expert health care.
+            </p>
+          </div>
+
+          <ServicesList />
+        </div>
+      </section>
+
+      {/* feature section */}
+      <section>
+        <div className="container">
+          <div className="flex items-center justify-between flex-col lg:flex-row">
+            {/* feature content */}
+            <div className="xl:w-[670px]">
+              <h2 className="heading">
+                Get virtual treatment <br /> anytime
+              </h2>
+
+              <ul className="pl-4">
+                <li className="text_para">
+                  1. Schedule the appointment directly
+                </li>
+                <li className="text_para">
+                  2. Search for your physician here, and contact their office
+                </li>
+                <li className="text_para">
+                  3. View our physicians who are accepting enw patients, use the
+                  online scheduling tool to select an appointment time.
+                </li>
+              </ul>
+              <Link to="/">
+                <button className="btn">Learn More</button>
+              </Link>
+            </div>
+
+            {/* feature img */}
+            <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
+              <img
+                src={
+                  "https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg2OC1zYXNpLTA2LmpwZw.jpg"
+                }
+                className="w-3/4 rounded-xl"
+                alt=""
+              />
+
+              <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] ;eft-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-[6px] lg:gap-3">
+                    <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-headingColor font-[600]">
+                      Tue, 24
+                    </p>
+                    <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-textColor font-[400]">
+                      10:00AM
+                    </p>
+                  </div>
+                  <span className="w-5 h-5 lg:w-[34px] lg:h-[34px] flex items-center justify-center bg-yellowColor rounded- py-1 px-[6px] lg:py-3 lg:px-[9px]">
+                    <img src={videoIcon} alt="" />
+                  </span>
                 </div>
-            </section>
-        {/* ============ services section ============ */}
-        <section>
-                <div className="servicesSection">
-                    <div className="servicesHeaderContainer">
-                        <h2 className="servicesHeader">Our Medical Services</h2>
-                        <p className="servicesText">
-                            At the heart of our institution lies a commitment to enhancing the well-being and health of our community. 
-                            Here's a brief overview into the range of medical services we offer. Want to know more? Click on the arrows below each segment to be taken directly to the practiotioners page.
-                        </p>
-                    </div>
-                    <div className="servicesOfferedContainer">
-                        {/* Mapping through services data*/}
-                        {servicesData.map(service => (
-                            <div className="servicesInnerContainer" key={service.id}>
-                                <div className="iconHeader">
-                                    <h2 className="iconHeaderContents">{service.title}</h2>
-                                    <p className="iconTextContents">{service.description}</p>
-                                    <Link to={service.link} className="arrowContainer">
-                                        <BsArrowRight className="arrowIcon"/>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+
+                <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6px] lg-px-[10px] text-[8px] leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
+                  Consultation
                 </div>
-            </section>
-        {/* ============ feature image ============ */}
-            <section>
-                <div className="featureSection">
-                    <div className="featInnerContainer">
-                        <div className="featImgContainer">
-                            <img src={featImg} alt="" className="featImg"/> {/*© [NeoLeo] / Adobe Stock*/}
-                            <div className="appointmentCard">
-                                <div className="cardContainer">
-                                    <div className="cardInnerContainer">
-                                        <p className="cardTextDate">
-                                        Wed, 23
-                                        </p>
-                                        <p className="cardTextType">
-                                            Consultation
-                                        </p>
-                                        <p className="cardTextTime">
-                                            10:00am
-                                        </p>
-                                    </div>
-                                    <span className="cardImgContainer">
-                                        <img src={videoIcon} alt="" className=""/>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-        {/* ============ feature content ============ */}          
-                        <div className="featHeaderContainer">
-                            <h2 className="featHeader">Get Virtual Treatment At Any Time</h2>
-                            <ul className="featListWrapper">
-                                <li className="featText">
-                                    1. Find a doctor, not sure which service you need? Don't worry, speak to our primary care physician 
-                                    and they'll refer you to the right department.
-                                </li>
-                                <li className="featTextList">
-                                    2. There may be multiple doctors to choose from based on the service you're looking for, take your time to open up each doctors profile and read the reviews.
-                                </li>
-                                <li className="featTextList">
-                                    3. Think you've found the right doctor to accomodate your needs, feel free to request an appointment that suits you using the online scheduling tool.
-                                </li>
-                                <li className="featTextList">
-                                    4. Finally, wait for your doctor to accept your booking and you're all set. Got any questions? Click the button below. 
-                                </li>
-                                <li className="featTextList"> 
-                                    (P.S. Don't forget to note down the booking in your diary!)
-                                </li>
-                            </ul> 
-                            <Link to="/Contact" className="linkWrapper">
-                            <button className="learnMoreButton">Contact Us</button>
-                            </Link>
-                        </div>
-                    </div> 
+
+                <div className="flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]">
+                  <img src={avatarIcon} alt="" />
+                  <h4 className="text-[10px] leading-3 lg:text-[16px] lg:leading-[22px] font-[700] text-headingColor">
+                    Wayne Collins
+                  </h4>
                 </div>
-            </section>
-        {/* ============ doctors section ============ */} 
-            <section>
-                <div className="docsThemeSection">
-                    <div className="docsThemeHeaderContainer">
-                        <h2 className="docsThemeHeader">Meet Our Doctors</h2>
-                        <p className="docsThemeText">
-                            In the world of healthcare, the human touch, expertise, and dedication stand paramount. Our hospital boasts a team of highly skilled, compassionate, and dedicated professionals committed to delivering the best care possible. 
-                            Here's an introduction to some of our esteemed doctors.
-                        </p>
-                    </div>
-                    <div className="docsThemeContainer">
-                        {displayedDoctors.map(doctor => (
-                            <div className="docsThemeInnerContainer" key={doctor.id}>
-                                <div className="docsThemeImgContainer">
-                                    <img src={doctor.imageUrl} alt={doctor.name} className="docsThemeImg"/>
-                                </div>
-                                <div className="docsThemeContents">
-                                    <h2 className="docsThemeHeaderContents">{doctor.name}</h2>
-                                    <div>
-                                        <span className="docsThemeTextType">{doctor.specialty}</span>
-                                        <p><BsFillStarFill className="star"/> {doctor.rating}</p>
-                                        <p className="docsThemeTotalRatings">({doctor.totalRatings})</p>
-                                    </div>
-                                    <Link to={doctor.profileLink} className="arrowContainer">
-                                        <BsArrowRight className="arrowIcon"/>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        {/* ============ faq section ============ */} 
-            <section>
-                <div className="faqContainer">
-                    <div className="faqInnerContainer">
-                        <div className="faqImgContainer">
-                            <img src={faqImg} alt="" className="faqImg"/> {/*© [steffenak] / Adobe Stock*/}
-                        </div>
-                        <div className="faqHeaderContainer">
-                            <h2 className="faqHeader">
-                                Most Frequently Asked Questions By Our Customers
-                            </h2>
-        {/* ============ faq content ============ */}   
-                            <FaqSection />
-                        </div>
-                    </div> 
-                </div>
-            </section>
-        {/* ============ testimonial section ============ */} 
-            <section>
-                <div className="testimonialSection">
-                    <div className="testimonialHeaderContainer">
-                        <h2 className="testimonialHeader">
-                            Our Patients Feedback
-                        </h2>
-                        <p className="testimonialText">
-                        Your health and satisfaction are at the core of what we do, and nothing speaks louder than the 
-                        feedback from those we’ve had the privilege to serve. Below, our patients share their experiences 
-                        with our online consultation platform, offering insights into the care and expertise they received.
-                        Their stories reflect our commitment to providing accessible, compassionate, and high-quality medical care for all.
-                        </p>
-                    </div>
-                    <Testimonial />
-                </div>
-            </section>
-        </>
-    );
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* our great doctors */}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">Our great doctors</h2>
+            <p className="text_para text-center">
+              World-class care for everyone. Our health System offers unmatched,
+              expert health care.
+            </p>
+          </div>
+
+          <DoctorList />
+        </div>
+      </section>
+
+      {/* faq section */}
+      <section>
+        <div className="container">
+          <div className="flex justify-between gap-[50px] lg:gap-0">
+            <div className="w-1/2 hidden md:block">
+              <img
+                src={
+                  "https://burst.shopifycdn.com/photos/male-doctor-standing-with-arms-crossed.jpg?width=1000&format=pjpg&exif=0&iptc=0"
+                }
+                alt=""
+                className="max-w-[500px] h-[500px] rounded-xl object-cover"
+              />
+            </div>
+
+            <div className="w-full md:w-1/2">
+              <h2 className="heading">
+                Most questions by our beloved patients
+              </h2>
+              <FaqList />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* testimonial */}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">What our patients say</h2>
+            <p className="text_para text-center">
+              Top-tier healthcare available to all. Our health system delivers
+              unparalleled, expert medical services.
+            </p>
+          </div>
+
+          <Testimonial />
+        </div>
+      </section>
+    </>
+  );
 };
 
-export default Home
-
+export default Home;
